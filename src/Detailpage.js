@@ -7,7 +7,7 @@ import {
   } from "react-router-dom";
 import Overview from './Overview/Overview'
 import './App.css';
-import China from "./China";
+import Characters from "./Characters";
 import Review from './components/Review';
 
 // import Characters from './components/Characters'
@@ -36,35 +36,27 @@ const detailpage = () => {
         </Jumbotron> 
         <Container >
         {/* <Col xs lg="4"> */}
-        <ListGroup horizontal >
+        {/* <ListGroup horizontal > */}
 {/*         
         <ListGroup.Item active tag="a" href="<Review />" action>Overview</ListGroup.Item>
         <ListGroup.Item  tag="a" href="<Overview />" action>Characters</ListGroup.Item>
         <ListGroup.Item  tag="a" href="" action>Review</ListGroup.Item> */}
         <HashRouter>
         <div>
-          
           <ul className="header">
             <li><NavLink active tag="a" exact to="/overview">Overview</NavLink></li>
-            <li><NavLink to="/china">Characters</NavLink></li>
+            <li><NavLink to="/characters">Characters</NavLink></li>
             <li><NavLink to="/review">Review</NavLink></li>
-            {/* <li><NavLink to="/fletch">Fletch</NavLink></li>
-            <li><NavLink to="/axios">Axios</NavLink></li> */}
           </ul>
           <div className="content">
-            {/* <Route exact path="/" component={Home}/> */}
-            <Route exact path="/china" component={China}/>
+            <Route exact path="/characters" component={Characters}/>
             <Route exact path="/overview" component={Overview}/>
             <Route exact path="/review" component={Review}/>
-            {/* <Route exact path="/germany" component={Germany}/>
-            <Route exact path="/counterapp" component={CounterApp}/> */}
-            {/* <Route exact path="/fletch" component={Fletch}/>
-            <Route exact path="/axios" component={Axios}/> */}
           </div>
         </div>
         </HashRouter>
         
-        </ListGroup>
+        {/* </ListGroup> */}
         {/* </Col> */}
         </Container>
         <br />

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
  
  
-class China extends Component {
+class Characters extends Component {
  
   constructor(props) {
     super(props);
@@ -57,4 +57,4 @@ class China extends Component {
     }
   }
  
-export default China;
+export default Characters;

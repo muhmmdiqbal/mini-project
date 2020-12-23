@@ -17,7 +17,7 @@ class Overview extends Component {
         //         synopsis: json
         //     })
         // })
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get('https://jsonplaceholder.typicode.com/posts/1')
         
         .then((result) => {
             // console.log(result.data);
@@ -36,12 +36,12 @@ class Overview extends Component {
        
         <Container >
         
-        {
-            this.state.synopsis.map(synopsis => {
-                return <Synopsis key={synopsis.id} title={synopsis.title} body={synopsis.body}/>
-            })
+        {/* {
+            this.state.synopsis.map(synopsis => { */}
+             <Synopsis key={this.state.synopsis.id} title={this.state.synopsis.title} body={this.state.synopsis.body}/>
+        
             
-        }
+        
         
         {/* <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.</p>       
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.</p> */}
