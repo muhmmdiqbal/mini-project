@@ -11,6 +11,7 @@ const Footer = () => {
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
           </Col>
 
+
           <Col md='2'>
             <ul className='list-unstyled'>
               <NavLink className='text-light'><li>Tentang Kami</li></NavLink>
