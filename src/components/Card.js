@@ -1,46 +1,51 @@
-import React, { Component, Link } from 'react';
-import { CardDeck, Card } from 'react-bootstrap';
-import Database1 from './database';
-// import Database from '../Homepages/database';
+import React, { Component } from 'react';
+import { Card, CardDeck } from 'react-bootstrap';
+import { data } from '../components/database';
 
 
-class CardBody extends Component {
-    constructor (props) {
-        super (props)
-        this.state = { activeTab: 1 }
-        // items: []
-    }  
-    
+class CardBD extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            data: data
+        }
+    }
+
     // componentDidMount(){
-    //     Axios.get("https://api.github.com/users/syomily/repos")
+    //     axios.get("https://api.github.com/users/syomily/repos")
     //     .then(res => {
     //         const items = res.data
     //         this.setState({items});
     //     })
-    //     .catch(err => console.log('parsing data is failed', err))
+    //     .catch(err => console.log('parsing data is failed, err'))
     // }
-    
-        toggleCategories () { 
-                if (this.state.activeTab === 1) {
-                    return Database1.map(data => (
-                        <div className="squarecard">
-                                <CardDeck>
-                                    <Card>
-                                    <Card.Img variant="top" style={{minwidth:'150', margin: 'auto'}} src={this.props.data.image} />
-                                        <Card.Body>
-                                            <Card.Title><Link>{this.props.data.Title}</Link></Card.Title>
-                                            <Card.Text><Link>{this.props.data.Genre}</Link></Card.Text>
-                                        </Card.Body>
-                                    </Card>
-                                </CardDeck>
-                            </div>
-                    ));
-                    
-                }
-        }
+
+    render(){
+        const{data} = this.state
+        console.log(data, 'cards')
+        return(
+            <CardDeck>
+            <React.Fragment>
+                {data ? this.state.data.map((Database1, image) => {
+                    return (
+                        <div className="kotak  mb-4">
+                            <Card>
+                                <Card.Img width="50" variant="top" src={Database1.image} />
+                                <Card.Body>
+                                    <Card.Title>{Database1.title}</Card.Title>
+                                    <Card.Text>{Database1.genre}</Card.Text>
+                                </Card.Body>               
+                            </Card>
+                        </div>    
+                    )
+                } ):null}
                 
-    
+            </React.Fragment>
+            </CardDeck>   
+        )    
+    }
+}
+export default CardBD;
 
-}    
 
-export default CardBody;
+
