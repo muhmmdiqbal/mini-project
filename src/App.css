@@ -8,6 +8,79 @@ hr {
   color: #FFFFFF;
 }
 
+ul.header li {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+  border: #000000;
+}
+
+ul.header {
+  background-color: #ffffff;
+  padding: 0;
+  border: #000000;
+}
+ul.header li a {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  text-decoration: none;
+  padding: 20px;
+  display: inline-block;
+}
+
+.bgCircle {
+  border-radius: 100%;
+  width: 230px;
+  height: 230px;
+  background-color: #a7b1b1;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: 10px;
+  float: left;
+  font-size: 13px;
+ 
+}
+ 
+.circle {
+  border-radius: 100%;
+}
+
+.jumbotron {
+  background-image: url(https://i.picsum.photos/id/755/768/250.jpg?hmac=aBo4uVPHWfxJeBWGqPt9nVKhUfO9f__gHGwF50ngsLI);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.ctr {
+  text-align: center;
+}
+
+.jumbotron-text {
+  color: #FFFFFF;
+} 
 .photo {
   height: 100px;
+}
+
+.download {
+  height: 9vh;
+}
+
+.page {
+  height: 7vh;
+  margin: 0 1vw;
+}
+
+.bg-header-footer {
+  background: #0A0A0A;
+}
+
+.logo {
+  height: 4rem;
+}
+
+.fa-user-circle {
+  color: #FFFFFF;
 }

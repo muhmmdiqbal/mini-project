@@ -27,7 +27,7 @@ const FormModal = () => {
 
   return (
     <>
-      <NavLink className='text-dark' onClick={handleShowSignIn}>Sign in</NavLink>
+      <NavLink className='text-light' onClick={handleShowSignIn}>Sign in</NavLink>
 
       <Modal show={showSignIn} onHide={handleCloseSignIn}>
         <Form>
@@ -46,11 +46,11 @@ const FormModal = () => {
               <FormControl type='password' placeholder='Password' />
             </FormGroup>
             
-            <p>Don't have an account yet?<NavLink className='d-inline' onClick={handleShowRegister}>Register</NavLink></p>
+            <p>Don't have an account yet?<NavLink className='d-inline text-danger' onClick={handleShowRegister}>Register</NavLink></p>
           </ModalBody>
 
           <ModalFooter>
-            <Button type='submit' variant='dark' onClick={isLoggedIn}>Sign in</Button>
+            <Button type='submit' variant='danger' onClick={isLoggedIn}>Sign in</Button>
           </ModalFooter>
         </Form>
       </Modal>
@@ -82,11 +82,11 @@ const FormModal = () => {
               <FormControl type='password' placeholder='Confirm Password' />
             </FormGroup>
 
-            <p>Already have an account?<NavLink className='d-inline' onClick={handleShowSignIn}>Sign in</NavLink></p>
+            <p>Already have an account?<NavLink className='d-inline text-danger' onClick={handleShowSignIn}>Sign in</NavLink></p>
           </ModalBody>
 
           <ModalFooter>
-            <Button type='submit' variant='dark' onClick={isRegistered}>Register</Button>
+            <Button type='submit' variant='danger' onClick={isRegistered}>Register</Button>
           </ModalFooter>
         </Form>
       </Modal>
