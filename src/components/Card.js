@@ -30,7 +30,7 @@ class CardBD extends Component {
                     return (
                         <div className="kotak  mb-4">
                             <Card>
-                                <Card.Img width="50" variant="top" src={Database1.image} />
+                                <Link><Card.Img width="50" variant="top" src={Database1.image} /></Link>
                                 <Card.Body>
                                     <Card.Title>{Database1.title}</Card.Title>
                                     <Card.Text>{Database1.genre}</Card.Text>
