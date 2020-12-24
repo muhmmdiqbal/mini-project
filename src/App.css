@@ -63,3 +63,24 @@ ul.header li a {
 .photo {
   height: 100px;
 }
+
+.download {
+  height: 9vh;
+}
+
+.page {
+  height: 7vh;
+  margin: 0 1vw;
+}
+
+.bg-header-footer {
+  background: #0A0A0A;
+}
+
+.logo {
+  height: 4rem;
+}
+
+.fa-user-circle {
+  color: #FFFFFF;
+}
