@@ -27,7 +27,7 @@ const FormModal = () => {
 
   return (
     <>
-      <NavLink className='text-dark' onClick={handleShowSignIn}>Sign in</NavLink>
+      <NavLink className='text-light' onClick={handleShowSignIn}>Sign in</NavLink>
 
       <Modal show={showSignIn} onHide={handleCloseSignIn}>
         <Form>

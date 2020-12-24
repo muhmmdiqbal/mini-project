@@ -22,7 +22,7 @@ function Profile() {
           <FormControl type='email' placeholder='Email Address' />
         </FormGroup>
         
-        <Button type='submit' variant='dark'>Edit Profile</Button>
+        <Button type='submit' variant='danger'>Edit Profile</Button>
       </Form>
     </div>
   )

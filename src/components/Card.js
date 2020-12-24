@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Card, CardDeck } from 'react-bootstrap';
 import { data } from '../components/database';
 
@@ -25,22 +25,22 @@ class CardBD extends Component {
         console.log(data, 'cards')
         return(
             <CardDeck>
-            <React.Fragment>
-                {data ? this.state.data.map((Database1, image) => {
-                    return (
-                        <div className="kotak  mb-4">
-                            <Card>
-                                <Card.Img width="50" variant="top" src={Database1.image} />
-                                <Card.Body>
-                                    <Card.Title>{Database1.title}</Card.Title>
-                                    <Card.Text>{Database1.genre}</Card.Text>
-                                </Card.Body>               
-                            </Card>
-                        </div>    
-                    )
-                } ):null}
-                
-            </React.Fragment>
+              <Fragment>
+                  {data ? this.state.data.map((Database1, image) => {
+                      return (
+                          <div className="kotak  mb-4">
+                              <Card>
+                                  <Card.Img width="50" variant="top" src={Database1.image} />
+                                  <Card.Body>
+                                      <Card.Title>{Database1.title}</Card.Title>
+                                      <Card.Text>{Database1.genre}</Card.Text>
+                                  </Card.Body>               
+                              </Card>
+                          </div>    
+                      )
+                  }) : null}
+                  
+              </Fragment>
             </CardDeck>   
         )    
     }
