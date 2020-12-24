@@ -1,17 +1,20 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import Routes from '../routes/router'
-import Detailpage from '../Detailpage'
+// import Routes from '../routes/router'
+// import Detailpage from '../Detailpage'
+import Carousel from '../components/Carousel'
+import Cards from '../components/Card'
 
 
 function Home() {
   return (
     <>
       <Header />
-      <Detailpage />
-      <Routes />
-
+      <div className="Banner mx-auto container d-flex">
+        <Carousel />
+      </div>
+      <Cards />
       <Footer />
     </>
   )
