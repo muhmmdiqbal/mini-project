@@ -43,7 +43,9 @@ class CardBD extends Component {
                           </div>    
                       )
                   }) : null}
+                  
               </Fragment>
+
             </CardColumns>  
             </Container> 
         )    
