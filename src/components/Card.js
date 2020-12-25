@@ -43,7 +43,7 @@ class CardBD extends Component {
                             </Card>
                             <Route exact path="/Detaipages" component={Detailpage}/>
                         </div>
-
+                        
                         </HashRouter>    
                     )
                 } ):null}
