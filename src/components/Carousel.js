@@ -1,4 +1,4 @@
-import React , { Component, useState } from 'react'
+import React , { useState } from 'react'
 import { Carousel } from 'react-bootstrap'
 
 
@@ -12,7 +12,7 @@ const CarouselHome = () => {
   
 
   return (
-    <div className="Banner mx-auto w-100 d-flex pb-5">
+    <div className="justify-content-center Banner d-flex pb-5 container">
             <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
         <img

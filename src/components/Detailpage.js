@@ -1,14 +1,14 @@
 import React from 'react'
-import {Jumbotron, Container, Row, Col, Button, ListGroup} from 'react-bootstrap'
+import {Jumbotron, Container, Row, Col, Button } from 'react-bootstrap'
 import {
     Route,
     NavLink,
     HashRouter
   } from "react-router-dom";
-import Overview from './Overview/Overview'
-import './App.css';
-import Characters from "./Characters";
-import Review from './components/Review';
+import Overview from '../components/Overview';
+import '../App.css';
+import Characters from '../components/Characters';
+import Review from '../components/Review';
 
 // import Characters from './components/Characters'
 // import Review from './components/Review'

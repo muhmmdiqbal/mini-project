@@ -1,5 +1,5 @@
 // import { ReactComponent } from '*.svg';
-import { Component } from 'react';
+// import { Component } from 'react';
 // import Image from '../Homepages/assets/black-clover 1.svg'
 
 export const data =
