@@ -1,6 +1,6 @@
 import React from 'react'
 import {  Container, } from 'react-bootstrap'
-import synopsis from '.Synopsis/synopsis'
+import Synopsis from '../components/Synopsis';
 
 const overview = () => {
     
@@ -11,7 +11,7 @@ const overview = () => {
         <h4>Synopsis<hr/></h4>
         {
             this.state.post.map(post => {
-                return <Synopsis title={synopsis.title} desc={synopsis.body}/>
+                return <Synopsis title={Synopsis.title} desc={Synopsis.body}/>
             })
         }
         

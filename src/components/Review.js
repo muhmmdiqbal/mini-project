@@ -1,33 +1,54 @@
-import React from 'react'
-import { Container, Media, Form } from 'react-bootstrap'
+import React, {Component, Fragment } from 'react'
+import {  Container, } from 'react-bootstrap'
+import Comments from '../components/Comments'
+import axios from 'axios'
 
-const review = () => {
-    return ( 
-    <div>
-        <Container>
-        <Form>
-  
-        <Form.Group controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Example textarea</Form.Label>
-            <Form.Control as="textarea" rows={3} placeholder="Leave a Review" />
-        </Form.Group>
-        </Form>
-        <Media>
-        <Media left href="#">
-            <img object data-src="https://i.picsum.photos/id/1062/64/64.jpg?hmac=k3r32Vx85v_GQogSso6jY4R9f5L2HHq-9FegviZGF1A" alt="" />
-        </Media>
-        <Media body>
-            <Media heading>
-            <strong>Media heading</strong>
-            </Media>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-        </Media>
-        </Media>
+class Review extends Component {
+    state = {
+        comments: []
+    }
+    
+    componentDidMount(){
+        // fetch('https://jsonplaceholder.typicode.com/posts/1')
         
-        <br />
-        </Container>
-    </div>
-    )
-}
+        // .then((response) => response.json())
+        // .then(json => {
+        //     this.setState({
+        //         synopsis: json
+        //     })
+        // })
+        axios.get('https://jsonplaceholder.typicode.com/comments/1')
+        
+        .then((result) => {
+            // console.log(result.data);
+            this.setState({
+                comments: result.data
+            })
+            
+        })
+        
+        
+    }
+    render() {
+    return (
+        <Fragment>
+       <div> 
+       
+        <Container >
+        
+        
 
-export default review
+              <Comments key={this.state.comments.id} name={this.state.comments.name} body={this.state.comments.body}/>
+           
+            
+        
+        
+
+        </Container>
+        
+        </div>
+        </Fragment>
+    )
+}}
+
+export default Review
