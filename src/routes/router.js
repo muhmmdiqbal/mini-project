@@ -5,6 +5,7 @@ import ListBrowser from '../components/ListBrowser';
 import Paginations from '../components/pagination';
 import Profile from '../components/Profile';
 
+
 const routes = () => {
   return (
     <Router>
@@ -23,3 +24,34 @@ const routes = () => {
 }
 
 export default routes
+
+
+
+
+
+// const routes = () => {
+//   return (
+//     <Router>
+//       <Switch>
+//         <Route path='/profile'>
+//           <Profile />
+//         </Route>
+//         <Route path='/carousel'>
+//           <CarouselHome />
+//         </Route>
+//         <Route path='/listbrowser'>
+//           <ListBrowser />
+//         </Route>
+//         <Route path='/detailpage'>
+//           <Detailpage />  
+//         </Route>
+//         <Route path='/pagination'>
+//           <Paginations />
+//         </Route>
+//         <Route exact path='/' component={Card} /> 
+//       </Switch>
+//     </Router>
+//   )
+// }
+
+// export default routes

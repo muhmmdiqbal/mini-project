@@ -41,9 +41,9 @@ class CardBD extends Component {
                                     <Card.Text>{Database1.genre}</Card.Text>
                                 </Card.Body>               
                             </Card>
-                            
+                            <Route exact path="/Detaipages" component={Detailpage}/>
                         </div>
-                        <Route exact path="/Detaipages" component={Detailpage}/>
+                        
                         </HashRouter>    
                     )
                 } ):null}

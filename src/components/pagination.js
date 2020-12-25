@@ -1,6 +1,7 @@
 import React from 'react'
-import { Pagination } from 'react-bootstrap'
+// import { Pagination } from 'react-bootstrap'
 
+ 
 const Paginations = () => {
     return (
         <div className="page justify-content-center d-flex pb-5">
