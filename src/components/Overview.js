@@ -1,7 +1,6 @@
 import React, {Component, Fragment } from 'react'
 import {  Container, } from 'react-bootstrap'
-import Synopsis from './Synopsis'
-import axios from 'axios'
+import Synopsis from '../components/Synopsis';
 
 class Overview extends Component {
     state = {
@@ -35,6 +34,12 @@ class Overview extends Component {
        <div> 
        
         <Container >
+        <h4>Synopsis<hr/></h4>
+        {
+            this.state.post.map(post => {
+                return <Synopsis title={Synopsis.title} desc={Synopsis.body}/>
+            })
+        }
         
         {/* {
             this.state.synopsis.map(synopsis => { */}

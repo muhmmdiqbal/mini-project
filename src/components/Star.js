@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import BeautyStars from 'beauty-stars';
 
-export default class App extends Component {
+export default class Star extends Component {
   state = { value: 0 };
   render() {
     return (

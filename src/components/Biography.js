@@ -1,12 +1,11 @@
 import React, { Component, Fragment } from 'react';
-
 import { Card, CardColumns } from 'react-bootstrap';
 import { data } from '../components/database';
 import { HashRouter, Route, Link } from 'react-router-dom';
 import Detailpage from '../components/Detailpage';
 
 
-class CardBD extends Component {
+class Biography extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -33,18 +32,17 @@ class CardBD extends Component {
                     return (
                         <HashRouter>
                         <div className="kotak  mb-4">
+                            <Link to="/detailpage">
                             <Card>
                                 <Card.Img width="50" variant="top" src={Database1.image} />
+                                <Route exact path="/Detaipages" component={Detailpage}/>
                                 <Card.Body>
-                                    <Link to="/detailpage">
-                                        <Card.Title>{Database1.title}</Card.Title>
-                                    </Link>
+                                    <Card.Title>{Database1.title}</Card.Title>
                                     <Card.Text>{Database1.genre}</Card.Text>
                                 </Card.Body>               
                             </Card>
-                            <Route exact path="/Detaipages" component={Detailpage}/>
+                            </Link>
                         </div>
-                        
                         </HashRouter>    
                     )
                 } ):null}
@@ -55,7 +53,7 @@ class CardBD extends Component {
     }
 }
 
-export default CardBD;
+export default Biography;
 
 
 
