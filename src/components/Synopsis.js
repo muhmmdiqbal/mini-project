@@ -8,7 +8,7 @@ const synopsis = (props) => {
         <Container >
         <h4>Synopsis<hr/></h4>
         <p className="title">{props.title}</p>
-         <br/>
+        <br/>
         <h4>Movie Info<hr/></h4>
         <p className="body">{props.body}</p>
         
