@@ -18,13 +18,6 @@ const FormModal = () => {
     setShowRegister(true)
   }
 
-  const isLoggedIn = () => {
-    setShowSignIn(false)
-  }
-  const isRegistered = () => {
-    setShowRegister(false)
-  }
-
   return (
     <>
       <NavLink className='text-light' onClick={handleShowSignIn}>Sign in</NavLink>
@@ -50,7 +43,7 @@ const FormModal = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button type='submit' variant='danger' onClick={isLoggedIn}>Sign in</Button>
+            <Button type='submit' variant='danger'>Sign in</Button>
           </ModalFooter>
         </Form>
       </Modal>
@@ -86,7 +79,7 @@ const FormModal = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button type='submit' variant='danger' onClick={isRegistered}>Register</Button>
+            <Button type='submit' variant='danger'>Register</Button>
           </ModalFooter>
         </Form>
       </Modal>

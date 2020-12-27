@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Col, Container, Form, FormControl, Image,  Nav, Navbar, NavbarBrand, NavDropdown } from 'react-bootstrap'
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse'
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle'
@@ -9,6 +9,13 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
   const icon = <FontAwesomeIcon icon={faUserCircle} size='2x' />
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const handleLoggedIn = () => {
+    setIsLoggedIn(true)
+  }
+
+
 
   return (
     <>
@@ -25,13 +32,22 @@ const Header = () => {
             </Col>
 
             <Nav>
-              <NavDropdown title={icon} id="basic-nav-dropdown">
+              { isLoggedIn
+                ? <NavDropdown title={icon} id="basic-nav-dropdown">
+                  <NavDropdown.Item className='font-weight-bold'>Full Name</NavDropdown.Item>
+                  <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
+                  <NavDropdown.Item>Sign out</NavDropdown.Item>
+                </NavDropdown>
+                : <FormModal />
+              }
+            
+              {/* <NavDropdown title={icon} id="basic-nav-dropdown">
                 <NavDropdown.Item className='font-weight-bold'>Full Name</NavDropdown.Item>
                 <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
                 <NavDropdown.Item>Sign out</NavDropdown.Item>
               </NavDropdown>
 
-              <FormModal />
+              <FormModal /> */}
             </Nav>
           </NavbarCollapse>
         </Container>
