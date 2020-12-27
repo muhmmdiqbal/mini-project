@@ -1,49 +1,50 @@
 import React, { Component, Fragment } from 'react';
 import { Card, CardColumns } from 'react-bootstrap';
 import { data } from '../components/database';
-import { HashRouter, Route, Link } from 'react-router-dom';
-import Detailpage from '../components/Detailpage';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
-class Action extends Component {
+
+class CardBD extends Component {
     constructor(props){
         super(props)
         this.state = {
-            data: data
+            items : []
         }
     }
 
-    // componentDidMount(){
-    //     axios.get("https://api.github.com/users/syomily/repos")
-    //     .then(res => {
-    //         const items = res.data
-    //         this.setState({items});
-    //     })
-    //     .catch(err => console.log('parsing data is failed, err'))
-    // }
+    componentDidMount(){
+        axios.get("http://13.212.139.34:3000/category/action?page=1")
+        .then(res => {
+            const items = res.data
+            this.setState({items});
+        })
+        .catch(err => console.log('parsing data is failed, err'))
+    }
 
     render(){
-        const{data} = this.state
-        console.log(data, 'cards')
+        const{items} = this.state
+        console.log(items, 'cards')
         return(
             <CardColumns>
             <Fragment>
-                {data ? this.state.data.map((Database1, image) => {
+                {items.length > 0?  items.map(item => {
                     return (
-                        <HashRouter>
-                        <div className="kotak  mb-4">
-                            <Link to="/detailpage">
-                            <Card>
-                                <Card.Img width="50" variant="top" src={Database1.image} />
-                                <Route exact path="/Detaipages" component={Detailpage}/>
+                        // <HashRouter>
+                        <div key={item.id} className="kotak  mb-4">
+                            <Card className='kotakecil mr-2'> 
+                                <Card.Img width="50" variant="top" src={items.poster} />
                                 <Card.Body>
-                                    <Card.Title>{Database1.title}</Card.Title>
-                                    <Card.Text>{Database1.genre}</Card.Text>
+                                    <Link to="/detailpage">
+                                        <Card.Title>{items.title}</Card.Title>
+                                    </Link>
+                                    <Card.Text>{items.genre}</Card.Text>
                                 </Card.Body>               
                             </Card>
-                            </Link>
                         </div>
-                        </HashRouter>    
+                        
+                        // </HashRouter>    
                     )
                 } ):null}
                 
@@ -53,7 +54,7 @@ class Action extends Component {
     }
 }
 
-export default Action;
+export default CardBD;
 
 
 
