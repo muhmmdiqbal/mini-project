@@ -17,7 +17,7 @@ const CarouselHome = () => {
       <Carousel.Item>
         <img
           className="d-block mx-auto"
-          src='https://themepack.me/i/c/749x468/media/g/1770/black-clover-theme-jr16.jpg'
+          src='http://13.212.139.34:3000/home/carouselImages'
           alt="First slide"
         />
         <Carousel.Caption>
