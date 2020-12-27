@@ -4,7 +4,6 @@ import Detailpage from '../components/Detailpage';
 import ListBrowser from '../components/ListBrowser';
 import Paginations from '../components/pagination';
 import Profile from '../components/Profile';
-import Detailpage from '../components/Detailpage';
 
 
 
@@ -13,12 +12,13 @@ const routes = () => {
     <Router>
       <Switch>
         <Route exact path='/'>
-          <CarouselHome />
+          {/* <CarouselHome />
           <ListBrowser />
-          <Paginations />
+          <Paginations /> */}
+        <Detailpage />
+
         </Route>
         <Route exact path='/profile' component={Profile} />
-        <Detailpage />
       
       </Switch>
     </Router>

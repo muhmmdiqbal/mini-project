@@ -1,10 +1,13 @@
 import React, {Component, Fragment } from 'react'
 import {  Container, } from 'react-bootstrap'
 import Synopsis from '../components/Synopsis';
+import Movieinfo from '../components/Movieinfo';
+import axios from 'axios'
 
 class Overview extends Component {
     state = {
-        synopsis: []
+        synopsis: [],
+        movieinfo: []
     }
     
     componentDidMount(){
@@ -23,8 +26,11 @@ class Overview extends Component {
             this.setState({
                 synopsis: result.data
             })
-            
+            this.setState({
+                movieinfo: result.data
+            })
         })
+        
         
         
     }
@@ -35,18 +41,13 @@ class Overview extends Component {
        
         <Container >
         <h4>Synopsis<hr/></h4>
-        {
-            this.state.post.map(post => {
-                return <Synopsis title={Synopsis.title} desc={Synopsis.body}/>
-            })
-        }
-        
-        {/* {
-            this.state.synopsis.map(synopsis => { */}
-             <Synopsis key={this.state.synopsis.id} title={this.state.synopsis.title} body={this.state.synopsis.body}/>
-        
+       
+        <Synopsis key={this.state.synopsis.id} title={this.state.synopsis.title}/>
+            
          <br/>
-        <h4><hr/></h4>
+        <h4>Movie Info<hr/></h4>
+        <Movieinfo  body={this.state.movieinfo.body}/>
+
         </Container>
         
         </div>

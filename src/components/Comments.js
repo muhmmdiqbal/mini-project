@@ -7,8 +7,7 @@ const review = (props) => {
     return ( 
     <div>
         <Container>
-        
-            
+         
         <Form>
         
         <Form.Group controlId="exampleForm.ControlTextarea1">
@@ -33,7 +32,7 @@ const review = (props) => {
             </Media>
         </Form.Group>
 
-        </Form><br/>
+        </Form>
             <Media>
             <img
                 width={64}
@@ -44,6 +43,7 @@ const review = (props) => {
             />
             <Media.Body>
                 <h5 className="name">{props.name}</h5>
+                <Star value={5} size={10}/>
                 <p className="body">{props.body}</p>
             </Media.Body>
             </Media><br/>
