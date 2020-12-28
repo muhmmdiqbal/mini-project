@@ -5,12 +5,9 @@ import React from 'react'
 import Routes from '../routes/router'
 
 
-
 function Home() {
   return (
-    <>
       <Routes />
-    </>
   )
 }
 

@@ -1,9 +1,11 @@
 // import { Router } from 'react-router';
 import './App.css';
-import Footer from './components/Footer';
-import Header from './components/Header';
-// import Overview from './components/Overview'
+import Footer from '../src/components/Footer';
+import Header from '../src/components/Header';
 import Home from '../src/pages/Home';
+
+
+
 
 
 

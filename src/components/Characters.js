@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { Card, CardColumns } from 'react-bootstrap';
-import { data } from '../components/database';
+import React, { Component } from 'react';
+
 
 
 

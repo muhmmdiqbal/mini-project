@@ -1,8 +1,30 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect } from 'react'
 import { Form, FormGroup, FormLabel, FormControl, Image, Button, FormFile } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function Profile() {
   const src = 'https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png'
+  
+  useEffect(() => {
+    const config = {
+      headers: {
+        Authorization: 'bearer' + localStorage.getItem('token')
+      }
+    }
+
+    console.log(config.headers.Authorization)
+
+    axios.get(`user/profile/${localStorage.getItem('email')}`).then(
+      res => {
+        console.log(res)
+      }
+    ).catch(
+      err => {
+        console.log(err)
+      }
+    )
+  })
   
   return (
     <div className='d-flex justify-content-center my-5'>

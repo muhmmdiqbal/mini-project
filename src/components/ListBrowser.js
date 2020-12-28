@@ -1,38 +1,47 @@
-import { Container } from 'react-bootstrap'
+import { Container } from 'react-bootstrap';
+import { Link, HashRouter, Route } from 'react-router-dom';
 import Cards from '../components/Card';
-import Action from '../components/Action';
-import Comedy from '../components/Comedy';
-import Drama from '../components/Drama';
-import Animation from '../components/Animation';
-import Biography from '../components/Biography';
-import { HashRouter, NavLink, Route } from 'react-router-dom';
-
+// import Action from '../components/Action';
+// import Comedy from '../components/Comedy';
+// import Drama from '../components/Drama';
+// import Animation from '../components/Animation';
+// import Biography from '../components/Biography';
 
 const ListBrowser = () => {
     return(
         <Container>
-        <HashRouter>
         <div className="list browser pb-5 mb-4 d-inline">
             <h1>Browse by Category</h1>
             <ul className="header">
-            <li><NavLink active tag="a" exact to="/">All</NavLink></li>
-            <li><NavLink to="/Action">Action</NavLink></li>
-            <li><NavLink to="/Comedy">Comedy</NavLink></li>
-            <li><NavLink to="/Drama">Drama</NavLink></li>
-            <li><NavLink to="/Animation">Animation</NavLink></li>
-            <li><NavLink to="/Biography">Biography</NavLink></li>
+            <li><Link to="/">All</Link></li>
+            <li><Link to="/action">Action</Link></li>
+            <li><Link to="/comedy">Comedy</Link></li>
+            <li><Link to="/drama">Drama</Link></li>
+            <li><Link to="/animation">Animation</Link></li>
+            <li><Link to="/biography">Biography</Link></li>
           </ul>
-          <div className="routerlist">
-          <Route exact path="/" component={Cards}/>
-            <Route exact path="/Action" component={Action}/>
-            <Route exact path="/Comedy" component={Comedy}/>
-            <Route exact path="/Drama" component={Drama}/>
-            <Route exact path="/Animation" component={Animation}/>
-            <Route exact path="/Biography" component={Biography}/>
+          <div className="bodycard">
+            <Cards />
+            {/* <HashRouter>
+          <Route path="/action" exact>
+              <Action />
+              </Route> 
+            <Route path="/comedy" exact>
+              <Comedy />
+            </Route>
+            <Route path="/drama" exact>
+              <Drama />
+            </Route>
+            <Route path="/animation" exact>
+              <Animation />
+            </Route>
+            <Route path="/biography" exact>
+              <Biography />
+            </Route>
+            </HashRouter> */}
           </div>
            
         </div>
-        </HashRouter>
         </Container>
     )
 }
