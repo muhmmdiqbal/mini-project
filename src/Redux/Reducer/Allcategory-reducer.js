@@ -5,7 +5,7 @@ import {
 
 const initialState = {
     loading: false,
-    todos: [],
+    results: [],
     poster : '',
     title : '',
     genre: '',
@@ -13,7 +13,7 @@ const initialState = {
 }
 
 export default(state = initialState, {type, payload}) => {
-    switch(type) {
+    switch(action.type) {
         case SET_LOADINGCATEGORY:
             return {
                 ...state,
@@ -23,7 +23,7 @@ export default(state = initialState, {type, payload}) => {
         case GET_ALLCATEGORY:
             return {
                 ...state,
-                todos: payload,
+                results: payload,
                 loading: false
             }
         default:

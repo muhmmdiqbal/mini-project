@@ -6,6 +6,8 @@ import Comedy from '../components/Comedy';
 import Drama from '../components/Drama';
 import Animation from '../components/Animation';
 import Biography from '../components/Biography';
+import { Carousel } from 'react-bootstrap';
+import Card from '../components/Card';
 // import Card from '../components/Card';
 
 
@@ -13,6 +15,8 @@ const routes = () => {
   return (
     <Router>
       <Switch>
+        <Carousel />
+        <Card />
         <Route exact path='/'>
         </Route>
         <Route exact path='/profile' component={Profile} />
