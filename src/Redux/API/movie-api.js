@@ -93,3 +93,5 @@ export const getCategorycomedy = async () => {
       return console.error(err)
     }
   }
+
+  
