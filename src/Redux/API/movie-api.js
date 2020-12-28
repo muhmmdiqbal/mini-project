@@ -5,10 +5,10 @@ const axios = defaultAxios.create({
   headers: {'Content-Type': 'application/json'}
 });
 
-// Get All Todos
-export const getAllTodos = async () => {
+// Get Carousel Images
+export const getCarousel = async () => {
   try {
-    const todos = await axios.get('todos?_limit=5')
+    const todos = await axios.get('carousel?_limit=3')
 
     return todos.data
   } catch(err) {
@@ -26,6 +26,72 @@ export const getAllOverview = async () => {
   }
 }
 
+// Get Characters
+export const getCharacters = async () => {
+    try {
+      const todos = await axios.get('character?_limit=15')
+  
+      return todos.data
+    } catch(err) {
+      return console.error(err)
+    }
+}
+  
+// Get All Category
+export const getAllCategory = async () => {
+    try {
+      const todos = await axios.get('allcategory?_limit=15')
+  
+      return todos.data
+    } catch(err) {
+      return console.error(err)
+    }
+}
+
+// Get Category Action
+export const getCategoryaction = async () => {
+    try {
+      const todos = await axios.get('categoryaction?_limit=15')
+  
+      return todos.data
+    } catch(err) {
+      return console.error(err)
+    }
+}
+
+// Get Category Animation
+export const getCategoryanimation = async () => {
+    try {
+      const todos = await axios.get('categoryanimation?_limit=15')
+  
+      return todos.data
+    } catch(err) {
+      return console.error(err)
+    }
+}
+
+// Get Category Biography
+export const getCategorybiography = async () => {
+    try {
+      const todos = await axios.get('categorybiography?_limit=15')
+  
+      return todos.data
+    } catch(err) {
+      return console.error(err)
+    }
+}
+
+// Get Category Comedy
+export const getCategorycomedy = async () => {
+    try {
+      const todos = await axios.get('categorycomedy?_limit=15')
+  
+      return todos.data
+    } catch(err) {
+      return console.error(err)
+    }
+  }
+    
 // Create New Todo
 export const createNewTodo = async (title) => {
   try {

@@ -3,6 +3,7 @@ import './App.css';
 import Footer from '../src/components/Footer';
 import Header from '../src/components/Header';
 import Home from '../src/pages/Home';
+// import Carousel from '../src/components/Carousel';
 
 
 
