@@ -49,7 +49,7 @@ ul.header li a {
 }
 
 .jumbotron {
-  background-image: url(https://i.picsum.photos/id/755/768/250.jpg?hmac=aBo4uVPHWfxJeBWGqPt9nVKhUfO9f__gHGwF50ngsLI);
+  background-image: url(https://webneel.com/daily/sites/default/files/images/daily/08-2018/3-india-movie-poster-design-bollywood-jodhaakbar.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -92,3 +92,9 @@ ul.header li a {
 .submit {
   text-align: right;
 }
+/* .kotakecil {
+  width: 250px !important;
+  height: auto !important;
+
+  
+} */

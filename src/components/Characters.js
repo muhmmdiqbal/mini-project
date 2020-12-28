@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { Card, CardColumns, Container, CardGroup, CardDeck, Col } from 'react-bootstrap';
 import { data } from '../components/database';
 // import '../App.css'; 
+// import React, { Component } from 'react';
+
 
 
 class CardBD extends Component {

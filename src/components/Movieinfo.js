@@ -20,3 +20,30 @@ const movieinfo = (props) => {
 }
 
 export default movieinfo
+// import React from 'react'
+// import PropTypes from 'prop-types'
+// import { Container} from 'react-bootstrap'
+// import '../App.css'; 
+
+// const movieInfo = ({ overview }) => {
+// 	return (
+// 		<div>
+// 		<Container>
+		
+// 		<h4>Movie Info<hr/></h4>
+// 		<p><strong>Released Date: </strong>{overview.Released}</p>
+// 		<p><strong>Director: </strong>{overview.Runtime}</p>
+// 		<p><strong>Writer: </strong>{overview.Writer}</p>
+// 		<p><strong>Genre: </strong>{overview.Genre}</p>
+ 
+		
+// 		</Container>
+// 		</div>
+// 	)
+// }
+
+// movieInfo.propTypes = {
+// 	overview: PropTypes.object.isRequired
+// }
+
+// export default movieInfo

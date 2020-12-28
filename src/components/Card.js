@@ -2,20 +2,21 @@ import React, { Component, Fragment } from 'react';
 
 import { Card, CardColumns } from 'react-bootstrap';
 import { data } from '../components/database';
-import { HashRouter, Route, Link } from 'react-router-dom';
-import Detailpage from '../components/Detailpage';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 
 class CardBD extends Component {
     constructor(props){
         super(props)
         this.state = {
-            data: data
+            items : []
         }
     }
 
     // componentDidMount(){
-    //     axios.get("https://api.github.com/users/syomily/repos")
+    //     axios.get()
     //     .then(res => {
     //         const items = res.data
     //         this.setState({items});
@@ -24,28 +25,27 @@ class CardBD extends Component {
     // }
 
     render(){
-        const{data} = this.state
-        console.log(data, 'cards')
+        const{items} = this.state
+        console.log(items, 'cards')
         return(
             <CardColumns>
             <Fragment>
-                {data ? this.state.data.map((Database1, image) => {
+                {items.length > 0?  items.map(item => {
                     return (
-                        <HashRouter>
-                        <div className="kotak  mb-4">
-                            <Card>
-                                <Card.Img width="50" variant="top" src={Database1.image} />
+                        // <HashRouter>
+                        <div key={item.id} className="kotak  mb-4">
+                            <Card className='kotakecil mr-2'> 
+                                <Card.Img width="50" variant="top" src={items.poster} />
                                 <Card.Body>
                                     <Link to="/detailpage">
-                                        <Card.Title>{Database1.title}</Card.Title>
+                                        <Card.Title>{items.title}</Card.Title>
                                     </Link>
-                                    <Card.Text>{Database1.genre}</Card.Text>
+                                    <Card.Text>{items.genre}</Card.Text>
                                 </Card.Body>               
                             </Card>
-                            <Route exact path="/Detaipages" component={Detailpage}/>
                         </div>
                         
-                        </HashRouter>    
+                        // </HashRouter>    
                     )
                 } ):null}
                 

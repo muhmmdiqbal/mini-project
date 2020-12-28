@@ -1,13 +1,19 @@
 import React from 'react'
 import {Jumbotron, Container, Row, Col, Button } from 'react-bootstrap'
-import '../App.css';
+// import '../App.css';
 
 const jumbotron = () => {
     
     return (
         <div>
         <Jumbotron fluid>
-            
+        {/* <Jumbotron.item> */}
+        {/* <img 
+          src='https://webneel.com/daily/sites/default/files/images/daily/08-2018/3-india-movie-poster-design-bollywood-jodhaakbar.jpg'
+          
+        /> */}
+        {/* </Jumbotron.item>  */}
+
             <Container >
                 <h1 className="jumbotron-text">This is Film</h1>
                 <Row>
@@ -23,9 +29,21 @@ const jumbotron = () => {
                     </p>
             </Container>
         </Jumbotron> 
-        
+        {/* <Carousel>
+      <Carousel.Item>
+        <img
+          className="d-block mx-auto"
+          src='https://wualumni.org/image/web-banner---Mary-Poppins.jpg'
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      </Carousel> */}
         </div>
-        )
-    }
+    )}
+    
 
 export default jumbotron
