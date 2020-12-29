@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Col, Container, Form, FormControl, Image,  Nav, Navbar, NavbarBrand, NavDropdown } from 'react-bootstrap'
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse'
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle'
@@ -8,8 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 
-const Header = () => {
+const Header = (props) => {
   const icon = <FontAwesomeIcon icon={faUserCircle} size='2x' />
+  const [isLoggedIn, setLoggedIn] = useState(false)
+  const [searchData, setSearchData] = useState({
+    
+  })
 
   let search = ''
 
@@ -18,9 +22,8 @@ const Header = () => {
     const data = {
       movieTitle: search
     }
-    
 
-    axios.post(`home/searchBar?page=1`, data)
+    axios.post(`http://13.212.139.34:3000/home/searchBar?page=1`, data)
       .then(
         res => {
           console.log(res)
@@ -46,9 +49,11 @@ const Header = () => {
               </Form>
             </Col>
 
-            <Nav>
+            <Nav className='text-center'>
+              {
+
+              }
                 <NavDropdown title={icon} id="basic-nav-dropdown">
-                  <NavDropdown.Item className='font-weight-bold'>Full Name</NavDropdown.Item>
                   <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
                   <NavDropdown.Item>Sign out</NavDropdown.Item>
                 </NavDropdown>

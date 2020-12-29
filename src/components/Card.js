@@ -7,39 +7,56 @@ import axios from 'axios';
 
 
 class CardBD extends Component {
-    constructor(props){
-        super(props)
+    constructor(){
+        super()
         this.state = {
-            items : []
+            result : []
         }
     }
 
     // componentDidMount(){
-    //     axios.get()
+    //     axios.get("http://13.212.139.34:3000/category?page=1")
     //     .then(res => {
-    //         const items = res.data
-    //         this.setState({items});
+    //         const result = res.data
+    //         this.setState({result});
     //     })
     //     .catch(err => console.log('parsing data is failed, err'))
     // }
 
+    componentDidMount(){
+        fetch("http://13.212.139.34:3000/category?page=1")
+        .then(res => res.json())
+        .then(parsedJSON => parsedJSON.result.map(data => (
+            {
+                poster: `${data.Poster}`,
+                title : `${data.Title}`,
+                genre: `${data.Genre}`
+            }
+        )))
+        .then(result => this.setState({
+            result
+        }))
+        .catch(error => console.log('parsing data is failed', error))
+    }
+
     render(){
-        const{items} = this.state
-        console.log(items, 'cards')
+        const{result} = this.state
+        console.log(result, 'cards')
         return(
             <CardColumns>
             <Fragment>
-                {items.length > 0?  items.map(item => {
+                {result?  result.map(item => {
+                    const { poster, title, genre} = result
                     return (
                         // <HashRouter>
-                        <div key={item.id} className="kotak  mb-4">
+                        <div key={poster} className="kotak  mb-4">
                             <Card className='kotakecil mr-2'> 
-                                <Card.Img width="50" variant="top" src={items.poster} />
+                                <Card.Icmg width="50" variant="top" src={poster} />
                                 <Card.Body>
                                     <Link to="/detailpage">
-                                        <Card.Title>{items.title}</Card.Title>
+                                        <Card.Title>{title}</Card.Title>
                                     </Link>
-                                    <Card.Text>{items.genre}</Card.Text>
+                                    <Card.Text>{genre}</Card.Text>
                                 </Card.Body>               
                             </Card>
                         </div>

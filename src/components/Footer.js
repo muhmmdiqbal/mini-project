@@ -12,7 +12,7 @@ const Footer = () => {
       <Container>
         <Row className='pt-5'>
           <Col md='6'>
-            <h1>MilanTV</h1>
+            <h1>UCMovie</h1>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
           </Col>
 
@@ -43,7 +43,7 @@ const Footer = () => {
 
         <Row className='pb-3'>
           <Col className='text-center'>
-            <p>Copyright © 2000-2020 MilanTV.  All Rights Reserved</p>
+            <p>Copyright © 2020 UCMovie.  All Rights Reserved</p>
           </Col>
         </Row>
       </Container>

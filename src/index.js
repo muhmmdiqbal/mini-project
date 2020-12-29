@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://13.212.139.34:3000/'
+axios.defaults.headers.common['Authorization'] = 'bearer ' + localStorage.getItem('token')
 
 ReactDOM.render(
   <React.StrictMode>

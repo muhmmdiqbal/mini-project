@@ -1,23 +1,21 @@
 import axios from 'axios'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, FormGroup, FormLabel, FormControl, Image, Button, FormFile } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 
 function Profile() {
   const src = 'https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png'
-  
+
+  const [name, setName] = useState(localStorage.getItem('nama'))
+  const [password, setPassword] = useState(localStorage.getItem('password'))
+  const [confirmPassword, setConfirmPassword] = useState(localStorage.getItem('confirmPassword'))
+  const [photo, setPhoto] = useState(localStorage.getItem('picture'))
+
   useEffect(() => {
-    const config = {
-      headers: {
-        Authorization: 'bearer' + localStorage.getItem('token')
-      }
-    }
-
-    console.log(config.headers.Authorization)
-
-    axios.get(`user/profile/${localStorage.getItem('email')}`).then(
+    axios.get(`http://13.212.139.34:3000/user/profile/${localStorage.getItem('email')}`).then(
       res => {
-        console.log(res)
+        const { picture, nama } = res.data.data
+        localStorage.setItem('picture', picture)
+        localStorage.setItem('nama', nama)
       }
     ).catch(
       err => {
@@ -25,26 +23,77 @@ function Profile() {
       }
     )
   })
+
+  const handleUpdate = () => {
+    const update = {
+      nama: name,
+      password: password,
+      passwordConfirmation: confirmPassword
+    }
+
+    axios.put(`http://13.212.139.34:3000/user/profile/update/${localStorage.getItem('email')}`, update)
+      .then(
+        res => {
+          localStorage.setItem('nama', name)
+          localStorage.setItem('password', password)
+        }
+      ).catch(
+        err => {
+          console.log(err)
+        }
+      )
+  }
   
   return (
     <div className='d-flex justify-content-center my-5'>
-      <Form>
+      <Form onSubmit={handleUpdate}>
         <FormGroup>
-          <Image src={src} className='photo rounded-circle' />
-          <FormFile></FormFile>
+          <Image 
+            src={
+              localStorage.getItem('picture') === '/img/null' || !localStorage.getItem('picture')
+                ? src 
+                : `http://13.212.139.34:3000/user/profile/`
+            }
+            className='photo rounded-circle'
+          />
+          <FormFile
+            accept='image/png, image/jpeg, image/jpg' 
+            onChange={e => setPhoto(e.target.files[0])}
+          />
         </FormGroup>
 
         <FormGroup>
           <FormLabel>Full Name</FormLabel>
-          <FormControl type='text' placeholder='Full Name' />
+          <FormControl 
+            type='text'
+            placeholder='Full Name'
+            value={name}
+            onChange={e => setName(e.target.value)} 
+            required
+          />
         </FormGroup>
 
         <FormGroup>
-          <FormLabel>Email Address</FormLabel>
-          <FormControl type='email' placeholder='Email Address' />
+          <FormLabel>Password</FormLabel>
+          <FormControl 
+            type='password' 
+            placeholder='Password' 
+            onChange={e => setPassword(e.target.value)}
+            required
+           />
+        </FormGroup>
+
+        <FormGroup>
+          <FormLabel>Confirm Password</FormLabel>
+          <FormControl 
+            type='password' 
+            placeholder='Confirm Password' 
+            onChange={e => setConfirmPassword(e.target.value)} 
+            required
+          />
         </FormGroup>
         
-        <Button type='submit' variant='danger'>Edit Profile</Button>
+        <Button type='submit' variant='danger'>Update Profile</Button>
       </Form>
     </div>
   )

@@ -9,7 +9,7 @@ import Biography from '../components/Biography';
 import ListBrowser from '../components/ListBrowser';
 import Paginations from '../components/pagination';
 import CarouselHome from '../components/Carousel';
-// import Card from '../components/Card';
+import Card from '../components/Card';
 
 
 const routes = () => {
