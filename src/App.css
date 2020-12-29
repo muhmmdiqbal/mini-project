@@ -49,16 +49,17 @@ ul.header li a {
 }
 
 .jumbotron {
-  background-image: url(https://webneel.com/daily/sites/default/files/images/daily/08-2018/3-india-movie-poster-design-bollywood-jodhaakbar.jpg);
+  background-image: url(https://humphsthoughts.files.wordpress.com/2017/03/logan-banner.jpg?w=650);
   background-repeat: no-repeat;
   background-size: cover;
+  height: 60vh;
 }
 .ctr {
   text-align: center;
 }
 
 .jumbotron-text {
-  color: #FFFFFF;
+  color: #000000;
 } 
 .photo {
   height: 100px;

@@ -15,15 +15,6 @@ class CardBD extends Component {
         }
     }
 
-    // componentDidMount(){
-    //     axios.get("http://13.212.139.34:3000/category?page=1")
-    //     .then(res => {
-    //         const result = res.data
-    //         this.setState({result});
-    //     })
-    //     .catch(err => console.log('parsing data is failed, err'))
-    // }
-
     componentDidMount(){
         fetch("http://13.212.139.34:3000/category?page=1")
         .then(res => res.json())
@@ -61,7 +52,17 @@ class CardBD extends Component {
                                 </Card.Body>               
                             </Card>
                         </div>
-                        
+                    //     <div key={Poster} className="kotak  mb-4">
+                    //     <Card className='kotakecil mr-2'> 
+                    //         <Card.Img width="50" variant="top" src={item.Poster} />
+                    //         <Card.Body>
+                    //             <Link to="/detailpage">
+                    //                 <Card.Title>{item.Title}</Card.Title>
+                    //             </Link>
+                    //             <Card.Text>{item.Genre}</Card.Text>
+                    //         </Card.Body>               
+                    //     </Card>
+                    // </div>
                         // </HashRouter>    
                     )
                 } ):null}

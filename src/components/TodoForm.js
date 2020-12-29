@@ -74,7 +74,7 @@ const TodoForm = ({
 				</Media>
 			</Form.Group>
 	
-			</Form>
+			</Form><br/>
 				{/* <Media>
 				<img
 					width={64}

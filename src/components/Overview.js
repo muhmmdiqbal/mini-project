@@ -1,64 +1,81 @@
 import React, {Component, Fragment } from 'react'
-import {  Container, } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import Synopsis from '../components/Synopsis';
 import Movieinfo from '../components/Movieinfo';
+
 import axios from 'axios'
 
 class Overview extends Component {
-    state = {
-        synopsis: [],
-        movieinfo: []
+    constructor(){
+        super()
+        this.state = {
+            movieInfo: [],
+
+          isLoaded: false,
+        }
     }
-    
+
+
     componentDidMount(){
-        fetch('https://jsonplaceholder.typicode.com/posts')
-        
-        .then(response => response.json())
-        .then(json => {
-            this.setState({
-                synopsis: json
-            })
-        })
-        // axios.get('https://jsonplaceholder.typicode.com/posts/1')
-        
-        // .then((result) => {
-        //     // console.log(result.data);
-        //     this.setState({
-        //         synopsis: result.data
-        //     })
-        //     this.setState({
-        //         movieinfo: result.data
-        //     })
-        // })
-        
-        
-        
+        axios.get("http://13.212.139.34:3000/movie/movieInfo/Logan?page=1")
+    .then(res => { console.log(res, 'TS3')
+        const movieInfo = res.data.movieInfo
+        this.setState({
+            movieInfo, isLoaded: true});
+    console.log(movieInfo)
+
+    })
+    .catch(err => console.log('parsing data is failed, err'))
     }
-    render() {
-    return (
-        <Fragment>
-       <div> 
-       
-        <Container >
-        <h4>Synopsis<hr/></h4>
-       {
-           this.state.synopsis.map(synopsis => {
-            return <Synopsis key={this.state.synopsis.id} title={this.state.synopsis.title}/>
-
-           })
-
-       }
-            
-         <br/>
-        <h4>Movie Info<hr/></h4>
-        <Movieinfo  body={this.state.movieinfo.body}/>
-
-        </Container>
         
-        </div>
-        </Fragment>
-    )
-}}
+    render() { 
+
+        const {isLoaded, movieInfo, } = this.state;
+
+        if (!isLoaded) {
+            return <div>Loading...</div>
+        }
+        else {
+            return (
+            <div>
+            
+            <Fragment>
+             
+       
+            <Container>
+               
+                
+                    <div>
+                    <h4>Synopsis<hr/></h4>
+                    <Synopsis key={this.state.movieInfo.Director} Plot={this.state.movieInfo.Plot} />
+                    <br/>
+                    <h4>Movie Info<hr/></h4>
+                    <Movieinfo 
+                    Released={this.state.movieInfo.Released} 
+                    Runtime={this.state.movieInfo.Runtime} 
+                    Director={this.state.movieInfo.Director} 
+                    Writer={this.state.movieInfo.Writer} 
+                    Genre={this.state.movieInfo.Genre} 
+                    Language={this.state.movieInfo.Language}
+                    Country={this.state.movieInfo.Country}/>
+                    </div>
+                    
+                     
+               
+            </Container>
+            
+            
+            </Fragment>
+            </div>
+       
+            
+            )
+         
+        
+       
+         
+            
+    }}}
 
 export default Overview
 

@@ -1,19 +1,30 @@
 import React, { Component, Fragment } from 'react';
 import { Card, CardColumns, Container, CardGroup, CardDeck, Col } from 'react-bootstrap';
-import { data } from '../components/database';
+// import { data } from '../components/database';
 // import '../App.css'; 
 // import React, { Component } from 'react';
+import axios from 'axios'
 
 
 
-class CardBD extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            data: data
-        }
-    }
-
+    class characters extends Component {
+      constructor(){
+          super()
+          this.state = {
+            result: []
+          }
+      }
+  
+  
+      componentDidMount(){
+          axios.get("http://13.212.139.34:3000/movie/characters")
+      .then(res => { console.log(res, 'TS2')
+          const result = res.data.result
+          this.setState({result});
+      })
+      .catch(err => console.log('parsing data is failed, err'))
+  
+      }
     // componentDidMount(){
     //     axios.get("https://api.github.com/users/syomily/repos")
     //     .then(res => {
@@ -24,25 +35,29 @@ class CardBD extends Component {
     // }
 
     render(){
-        const{data} = this.state
-        console.log(data, 'cards')
+        const{result} = this.state
+        console.log(result, 'CH')
         return(
             <Container>
+              <h4>Characters<hr/></h4>
+
             <CardDeck >
             <CardColumns>
               <Fragment>
-                  {data ? this.state.data.map((Database1, image) => {
+
+                  {result ? result.map(item => {
+                    const {Nama, Picture} = result 
                       return (
-                          <div className="kotak mb-4">
-                              <Col >
-                              <Card>
-                                  <Card.Img width="50" variant="top" src={Database1.image} href=""/>
+                          <div key={Picture} className="kotak mb-4">
+                              
+                              <Card className='kotakecil mr-2'>
+                                  <Card.Img width={200} height={300} variant="top" src={item.Picture}/>
                                   <Card.Body>
-                                      <Card.Title>{Database1.title}</Card.Title>
+                                      <Card.Title>{item.Nama}</Card.Title>
                                       
                                   </Card.Body>               
                               </Card>
-                              </Col>
+                              
                           </div>    
                       )
                   }) : null}
@@ -53,7 +68,7 @@ class CardBD extends Component {
         )    
     }
 }
-export default CardBD;
+export default characters;
 
 
 

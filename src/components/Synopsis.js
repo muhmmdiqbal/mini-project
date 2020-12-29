@@ -6,7 +6,7 @@ const synopsis = (props) => {
         <div> 
        
         
-        <p className="title">{props.title}</p>
+        <p className="title">{props.Plot}</p>
         
         
         </div> 
