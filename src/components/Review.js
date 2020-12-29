@@ -15,7 +15,7 @@ class review extends Component {
         this.state = {
           reviews: [],
           form: {
-            _id: '',
+            _id: 1,
             Nama: '',
             Rating: '',
             Review: '',
@@ -36,7 +36,7 @@ class review extends Component {
     }
 
     postDataToAPI = () => {
-        axios.post('http://13.212.139.34:3000/movie/movieInfo/Logan?page=1', this.state.form)
+        axios.post('http://13.212.139.34:3000/user/review/timc@example.com', this.state.form)
         .then((res) => {
             console.log(res)
         })
@@ -46,12 +46,17 @@ class review extends Component {
 
     handleFormChange = (event) => {
         let formNew = {...this.state.form};
+        let timestamp = new Date().getTime();
+        formNew['_id','id'] = timestamp;
         formNew[event.target.name] = event.target.value;
         this.setState({
             form: formNew
         }, () => {
             console.log('value obj formNew: ', this.state.form)
         })
+    }
+    handleSubmit = () => {
+        console.log(this.state.form)
     }
     handleOnClick = () => {
 		this.postDataToAPI()
@@ -84,7 +89,7 @@ class review extends Component {
                                    type="text" 
                                    onChange={this.handleFormChange}
                                    name="Review"/><br/>
-                                   <Button as="input" type="submit" value="Submit" className="submit" onClick={this.handleOnClick}/>
+                                   <Button as="input" type="submit" value="Submit" className="submit" onClick={this.handleSubmit}/>
                                    </Media.Body>
                                    
                                    </Media>

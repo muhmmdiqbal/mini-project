@@ -15,7 +15,6 @@ class CardBD extends Component {
         }
     }
 
-
     componentDidMount(){
         axios.get("http://13.212.139.34:3000/category?page=1")
     .then(res => { console.log(res, 'TS')
@@ -38,9 +37,9 @@ class CardBD extends Component {
                         // <HashRouter>
                         <div key={Poster} className="kotak  mb-4">
                             <Card className='kotakecil mr-2'> 
-                                <Card.Img width="50" variant="top" src={item.Poster} />
+                                <Card.Img width={200} height={300} variant="top" src={item.Poster} />
                                 <Card.Body>
-                                    <Link to="/detailpage">
+                                    <Link to="/detailpage#/overview">
                                         <Card.Title>{item.Title}</Card.Title>
                                     </Link>
                                     <Card.Text>{item.Genre}</Card.Text>
