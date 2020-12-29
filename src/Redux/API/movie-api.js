@@ -51,7 +51,7 @@ export const getAllCategory = async () => {
 // Get Category Action
 export const getCategoryaction = async () => {
     try {
-      const todos = await axios.get('categoryaction?_limit=15')
+      const todos = await axios.get('action?_limit=15')
   
       return todos.data
     } catch(err) {
@@ -62,7 +62,7 @@ export const getCategoryaction = async () => {
 // Get Category Animation
 export const getCategoryanimation = async () => {
     try {
-      const todos = await axios.get('categoryanimation?_limit=15')
+      const todos = await axios.get('animation?_limit=15')
   
       return todos.data
     } catch(err) {
@@ -73,7 +73,7 @@ export const getCategoryanimation = async () => {
 // Get Category Biography
 export const getCategorybiography = async () => {
     try {
-      const todos = await axios.get('categorybiography?_limit=15')
+      const todos = await axios.get('biography?_limit=15')
   
       return todos.data
     } catch(err) {
@@ -84,34 +84,24 @@ export const getCategorybiography = async () => {
 // Get Category Comedy
 export const getCategorycomedy = async () => {
     try {
-      const todos = await axios.get('categorycomedy?_limit=15')
+      const todos = await axios.get('comedy?_limit=15')
   
       return todos.data
     } catch(err) {
       return console.error(err)
     }
   }
-    
-// Create New Todo
-export const createNewTodo = async (title) => {
-  try {
-    const todo = await axios.post('todos', {
-      title
-    })
-
-    return todo.data
-  } catch(err) {
-    return console.error(err)
+  
+  
+// Get Category Drama  
+  export const getCategorydrama = async () => {
+    try {
+      const todos = await axios.get('drama?_limit=15')
+  
+      return todos.data
+    } catch(err) {
+      return console.error(err)
+    }
   }
-}
 
-// Delete existed todo
-export const deleteExistedTodo = async (id) => {
-  try {
-    await axios.delete(`todos/${id}`)
-    
-    return id
-  } catch(err) {
-     return console.error(err)
-  }
-}
+  
