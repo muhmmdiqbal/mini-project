@@ -1,56 +1,48 @@
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import Detailpage from '../components/Detailpage';
-import Profile from '../components/Profile';
-import Action from '../components/Action';
-import Comedy from '../components/Comedy';
-import Drama from '../components/Drama';
-import Animation from '../components/Animation';
-import Biography from '../components/Biography';
-import { Carousel } from 'react-bootstrap';
-import Card from '../components/Card';
-// import Card from '../components/Card';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Detailpage from "../components/Detailpage";
+import Profile from "../components/Profile";
+import Action from "../components/Action";
+import Comedy from "../components/Comedy";
+import Drama from "../components/Drama";
+import Animation from "../components/Animation";
+import Biography from "../components/Biography";
+import Homepage from "../components/Homepage";
 
 
 const routes = () => {
   return (
     <Router>
       <Switch>
-        <Carousel />
-        <Card />
-        <Route exact path='/'>
+        <Route path="/" exact>
+          <Homepage />
         </Route>
-        <Route exact path='/profile' component={Profile} />
-        <Route path='/detailpage' exact>
+        <Route path="/profile" exact>
+          <Profile />
+        </Route>  
+        <Route path="/action" exact>
+          <Action />
+        </Route>
+        <Route path="/comedy" exact>
+          <Comedy />
+        </Route>
+        <Route path="/drama" exact>
+          <Drama />
+        </Route>
+        <Route path="/animation" exact>
+          <Animation />
+        </Route>
+        <Route path="/biography" exact>
+          <Biography />
+        </Route>
+        <Route path="/detailpage" exact>
           <Detailpage />
         </Route>
-            <Route path="/action" exact>
-              <Action />
-              </Route> 
-            <Route path="/comedy" exact>
-              <Comedy />
-            </Route>
-            <Route path="/drama" exact>
-              <Drama />
-            </Route>
-            <Route path="/animation" exact>
-              <Animation />
-            </Route>
-            <Route path="/biography" exact>
-              <Biography />
-            </Route> 
-             {/* <Route path="/card" exact>
-              <Card />  
-            </Route> */}
       </Switch>
     </Router>
-  )
-}
+  );
+};
 
-export default routes
-
-
-
-
+export default routes;
 
 // const routes = () => {
 //   return (
@@ -66,12 +58,12 @@ export default routes
 //           <ListBrowser />
 //         </Route>
 //         <Route path='/detailpage'>
-//           <Detailpage />  
+//           <Detailpage />
 //         </Route>
 //         <Route path='/pagination'>
 //           <Paginations />
 //         </Route>
-//         <Route exact path='/' component={Card} /> 
+//         <Route exact path='/' component={Card} />
 //       </Switch>
 //     </Router>
 //   )

@@ -1,6 +1,8 @@
 import { Container } from 'react-bootstrap';
 import { Link, HashRouter, Route } from 'react-router-dom';
-import Cards from '../components/Card';
+import Card from './Card';
+import Paginations from './pagination';
+import Carousel from './Carousel';
 // import Action from '../components/Action';
 // import Comedy from '../components/Comedy';
 // import Drama from '../components/Drama';
@@ -10,6 +12,7 @@ import Cards from '../components/Card';
 const ListBrowser = () => {
     return(
         <Container>
+        <Carousel />  
         <div className="list browser pb-5 mb-4 d-inline">
             <h1>Browse by Category</h1>
             <ul className="header">
@@ -20,28 +23,9 @@ const ListBrowser = () => {
             <li><Link to="/animation">Animation</Link></li>
             <li><Link to="/biography">Biography</Link></li>
           </ul>
-          <div className="bodycard">
-            <Cards />
-            {/* <HashRouter>
-          <Route path="/action" exact>
-              <Action />
-              </Route> 
-            <Route path="/comedy" exact>
-              <Comedy />
-            </Route>
-            <Route path="/drama" exact>
-              <Drama />
-            </Route>
-            <Route path="/animation" exact>
-              <Animation />
-            </Route>
-            <Route path="/biography" exact>
-              <Biography />
-            </Route>
-            </HashRouter> */}
-          </div>
-           
         </div>
+        <Card />
+        <Paginations />
         </Container>
     )
 }
