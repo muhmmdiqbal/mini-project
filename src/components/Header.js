@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Col, Container, Form, FormControl, Image,  Nav, Navbar, NavbarBrand, NavDropdown } from 'react-bootstrap'
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse'
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle'
@@ -6,9 +6,27 @@ import FormModal from './FormModal'
 import logo from './assets/logo.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import SearchResult from './SearchResult'
 
 const Header = () => {
   const icon = <FontAwesomeIcon icon={faUserCircle} size='2x' />
+  const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem('isLoggedIn'))
+
+  const handleSignOut = () => {
+    localStorage.removeItem('isLoggedIn')
+    localStorage.removeItem('token')
+    localStorage.removeItem('nama')
+    localStorage.removeItem('email')
+    localStorage.removeItem('password')
+    localStorage.removeItem('picture')
+    window.location.reload()
+  }
+
+  let search = ''
+
+  const handleSearch = () => {
+    <SearchResult searchTerm={search} />
+  }
 
   return (
     <>
@@ -19,19 +37,25 @@ const Header = () => {
           <NavbarToggle aria-controls="basic-navbar-nav" />
           <NavbarCollapse id="basic-navbar-nav">
             <Col>
-              <Form inline>
-                  <FormControl type="text" placeholder="Search" className="mx-auto w-75" />
+              <Form inline onSubmit={handleSearch}>
+                  <FormControl type="text" placeholder="Enter movie title" className="mx-auto w-75" onChange={e => search = e.target.value} />
               </Form>
             </Col>
 
-            <Nav>
-              <NavDropdown title={icon} id="basic-nav-dropdown">
-                <NavDropdown.Item className='font-weight-bold'>Full Name</NavDropdown.Item>
-                <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
-                <NavDropdown.Item>Sign out</NavDropdown.Item>
-              </NavDropdown>
-
-              <FormModal />
+            <Nav className='text-center'>
+              {
+                isLoggedIn
+                ? <NavDropdown title={icon} id="basic-nav-dropdown">
+                  <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleSignOut}>Sign out</NavDropdown.Item>
+                </NavDropdown>
+                : <FormModal />
+              }
+                {/* <NavDropdown title={icon} id="basic-nav-dropdown">
+                  <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
+                  <NavDropdown.Item>Sign out</NavDropdown.Item>
+                </NavDropdown>
+                <FormModal /> */}
             </Nav>
           </NavbarCollapse>
         </Container>
