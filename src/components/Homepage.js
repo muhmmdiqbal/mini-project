@@ -1,5 +1,5 @@
 import { Container } from 'react-bootstrap';
-import { Link, HashRouter, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Card from './Card';
 import Paginations from './pagination';
 import Carousel from './Carousel';

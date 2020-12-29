@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 import { Card, CardColumns } from 'react-bootstrap';
-import { data } from '../components/database';
+// import { data } from '../components/database';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -32,7 +32,7 @@ class CardBD extends Component {
             <CardColumns>
             <Fragment>
                 {results?  results.map(item => {
-                    const { Poster, Title, Genre} = results
+                    const { Poster} = results
                     return (
                         // <HashRouter>
                         <div key={Poster} className="kotak  mb-4">
