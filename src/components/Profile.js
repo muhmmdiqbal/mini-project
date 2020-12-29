@@ -17,7 +17,7 @@ function Profile() {
     axios.get(`http://13.212.139.34:3000/user/profile/${localStorage.getItem('email')}`).then(
       res => {
         const { picture, nama } = res.data.data
-        nameTemp = nama
+        // nameTemp = nama
         setName(nameTemp)
         localStorage.setItem('picture', picture)
         localStorage.setItem('nama', nama)
