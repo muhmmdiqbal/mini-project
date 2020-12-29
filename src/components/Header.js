@@ -6,35 +6,26 @@ import FormModal from './FormModal'
 import logo from './assets/logo.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
-import axios from 'axios'
+import SearchResult from './SearchResult'
 
-const Header = (props) => {
+const Header = () => {
   const icon = <FontAwesomeIcon icon={faUserCircle} size='2x' />
-  const [isLoggedIn, setLoggedIn] = useState(false)
-  const [searchData, setSearchData] = useState({
-    searchTerm: '',
-    movieTitle: '',
+  const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem('isLoggedIn'))
 
-  })
+  const handleSignOut = () => {
+    localStorage.removeItem('isLoggedIn')
+    localStorage.removeItem('token')
+    localStorage.removeItem('nama')
+    localStorage.removeItem('email')
+    localStorage.removeItem('password')
+    localStorage.removeItem('picture')
+    window.location.reload()
+  }
 
-  let search = 'rush'
+  let search = ''
 
-  const handleSearch = e => {
-    e.preventDefault()
-    const data = {
-      movieTitle: search
-    }
-
-    axios.post(`http://13.212.139.34:3000/home/searchBar?page=1`, data)
-      .then(
-        res => {
-          console.log(res)
-        }
-      ).catch(
-        err => {
-          console.log(err)
-        }
-      )
+  const handleSearch = () => {
+    <SearchResult searchTerm={search} />
   }
 
   return (
@@ -53,13 +44,18 @@ const Header = (props) => {
 
             <Nav className='text-center'>
               {
-
+                isLoggedIn
+                ? <NavDropdown title={icon} id="basic-nav-dropdown">
+                  <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleSignOut}>Sign out</NavDropdown.Item>
+                </NavDropdown>
+                : <FormModal />
               }
-                <NavDropdown title={icon} id="basic-nav-dropdown">
+                {/* <NavDropdown title={icon} id="basic-nav-dropdown">
                   <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
                   <NavDropdown.Item>Sign out</NavDropdown.Item>
                 </NavDropdown>
-                <FormModal />
+                <FormModal /> */}
             </Nav>
           </NavbarCollapse>
         </Container>

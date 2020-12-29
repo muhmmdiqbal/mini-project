@@ -4,6 +4,7 @@ import { Form, FormGroup, FormLabel, FormControl, Button, NavLink, Modal, ModalT
 import ModalHeader from 'react-bootstrap/esm/ModalHeader'
 
 const FormModal = () => {
+
   const [showSignIn, setShowSignIn] = useState(false)
   const [showRegister, setShowRegister] = useState(false)
 
@@ -17,6 +18,10 @@ const FormModal = () => {
   const handleShowRegister = () => {
     setShowSignIn(false)
     setShowRegister(true)
+  }
+
+  const handlePassword = () => {
+    
   }
 
   let fullName, email, password, confirmPassword
@@ -34,6 +39,7 @@ const FormModal = () => {
           localStorage.setItem('token', res.data.token)
           localStorage.setItem('email', email)
           localStorage.setItem('password', password)
+          localStorage.setItem('isLoggedIn', true)
           window.location.reload()
         }
       ).catch(
@@ -59,6 +65,7 @@ const FormModal = () => {
           localStorage.setItem('nama', fullName)
           localStorage.setItem('email', email)
           localStorage.setItem('password', password)
+          localStorage.setItem('isLoggedIn', true)
           window.location.reload()
         }
       ).catch(
@@ -84,7 +91,8 @@ const FormModal = () => {
               <FormControl
                 type='email' 
                 placeholder='Email Address' 
-                onChange={e => email = e.target.value}  
+                onChange={e => email = e.target.value}
+                required
               />
             </FormGroup>
 
@@ -94,6 +102,7 @@ const FormModal = () => {
                 type='password' 
                 placeholder='Password' 
                 onChange={e => password = e.target.value}  
+                required
               />
             </FormGroup>
             
@@ -121,6 +130,7 @@ const FormModal = () => {
                 type='text' 
                 placeholder='Full Name' 
                 onChange={e => fullName = e.target.value} 
+                required
               />
             </FormGroup>
 
@@ -129,7 +139,7 @@ const FormModal = () => {
               <FormControl 
                 type='email' 
                 placeholder='Email Address' 
-                onChange={e => email = e.target.value} 
+                onChange={e => email = e.target.value}
               />
             </FormGroup>
 
@@ -137,8 +147,9 @@ const FormModal = () => {
               <FormLabel>Password</FormLabel>
               <FormControl 
                 type='password' 
-                placeholder='Password' 
-                onChange={e => password = e.target.value} 
+                placeholder='Password'
+                name='password'
+                onChange={e => password = e.target.value}
               />
             </FormGroup>
 
@@ -146,8 +157,9 @@ const FormModal = () => {
               <FormLabel>Confirm Password</FormLabel>
               <FormControl 
                 type='password' 
-                placeholder='Confirm Password' 
-                onChange={e => confirmPassword = e.target.value} 
+                name='confirmPassword'
+                placeholder='Confirm Password'
+                onChange={e => confirmPassword = e.target.value}
               />
             </FormGroup>
 

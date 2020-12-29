@@ -1,114 +1,74 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Card, CardColumns, Container, CardGroup, CardDeck, Col } from 'react-bootstrap';
+// import { data } from '../components/database';
+// import '../App.css'; 
+// import React, { Component } from 'react';
+import axios from 'axios'
 
 
 
-
-
-// class Characters extends Component {
-//     constructor(props){
-//         super(props)
-//         this.state = {
-//             data: data
-//         }
-//     }
-
-//     // componentDidMount(){
-//     //     axios.get("https://api.github.com/users/syomily/repos")
-//     //     .then(res => {
-//     //         const items = res.data
-//     //         this.setState({items});
-//     //     })
-//     //     .catch(err => console.log('parsing data is failed, err'))
-//     // }
-
-//     render(){
-//         const{data} = this.state
-//         console.log(data, 'cards')
-//         return(
-//             <CardColumns>
-//             <Fragment>
-//                 {data ? this.state.data.map((Database1, image) => {
-//                     return (
-//                         <div className="kotak  mb-4">
-//                             <Card>
-//                                 <Card.Img width="50" variant="top" src={Database1.image} />
-//                                 <Card.Body>
-//                                         <Card.Title>{Database1.title}</Card.Title>
-//                                 </Card.Body>               
-//                             </Card>
-                            
-//                         </div>
+    class characters extends Component {
+      constructor(){
+          super()
+          this.state = {
+            result: []
+          }
+      }
   
-//                     )
-//                 } ):null}
-                
-//             </Fragment>
-//             </CardColumns>   
-//         )    
-//     }
-// }
+  
+      componentDidMount(){
+          axios.get("http://13.212.139.34:3000/movie/characters")
+      .then(res => { console.log(res, 'TS2')
+          const result = res.data.result
+          this.setState({result});
+      })
+      .catch(err => console.log('parsing data is failed, err'))
+  
+      }
+    // componentDidMount(){
+    //     axios.get("https://api.github.com/users/syomily/repos")
+    //     .then(res => {
+    //         const items = res.data
+    //         this.setState({items});
+    //     })
+    //     .catch(err => console.log('parsing data is failed, err'))
+    // }
 
-// export default Characters;
+    render(){
+        const{result} = this.state
+        console.log(result, 'CH')
+        return(
+            <Container>
+              <h4>Characters<hr/></h4>
 
+            <CardDeck >
+            <CardColumns>
+              <Fragment>
 
-
-// import React, { Component } from "react";
- 
- 
-class Characters extends Component {
- 
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: []
-    };
-  }
- 
-  componentDidMount() {
-      fetch("https://randomuser.me/api/?results=10&nat=cn")
-        .then(res => res.json())
-        .then(parsedJSON => parsedJSON.results.map(data => (
-          {
-            id: `${data.id.name}`,
-            firstName: `${data.name.first}`,
-            lastName: `${data.name.last}`,
-            location: `${data.location.state}, ${data.nat}`,
-            thumbnail: `${data.picture.large}`,
- 
-          }
-        )))
-        .then(items => this.setState({
-          items,
-          isLoaded: false
-        }))
-        .catch(error => console.log('parsing failed', error))
+                  {result ? result.map(item => {
+                    const {Nama, Picture} = result 
+                      return (
+                          <div key={Picture} className="kotak mb-4">
+                              
+                              <Card className='kotakecil mr-2'>
+                                  <Card.Img width={200} height={300} variant="top" src={item.Picture}/>
+                                  <Card.Body>
+                                      <Card.Title>{item.Nama}</Card.Title>
+                                      
+                                  </Card.Body>               
+                              </Card>
+                              
+                          </div>    
+                      )
+                  }) : null}
+              </Fragment>
+            </CardColumns> 
+            </CardDeck> 
+            </Container> 
+        )    
     }
- 
-    render() {
-      const {items } = this.state;
-        return (
-          <div className="boxWhite">
-         
-            {
-              items.length > 0 ? items.map(item => {
-              const {id, firstName, lastName, location, thumbnail} = item;
-               return (
- 
-               <div key={id} className="bgCircle">
-               <center><img src={thumbnail} alt={firstName} className="circle"/> </center><br />
-               <div className="ctr">
-                  {firstName} {lastName}<br />
-                  {location}
-                </div>
- 
-              </div>
-              );
-            }) : null
-          }
-          </div>
-        );
- 
-    }
-  }
- 
-export default Characters;
+}
+export default characters;
+
+
+

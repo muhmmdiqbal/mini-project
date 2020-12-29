@@ -1,20 +1,20 @@
 import { 
-    SET_LOADINGMOVIEINFO,
+    SET_LOADING,
     GET_MOVIEINFO,
 
-  } from '../actions/todo-action'
+  } from '../Action/movie-action'
   
   // Define your state here
   const initialState = {
     loading: false,
-    todos: [],
-    Movieinfo: ''
+    overviews: [],
+    movieinfo: ''
   }
   
   // This export default will control your state for your application
   export default(state = initialState, {type, payload}) => {
     switch(type) {
-      case SET_LOADINGMOVIEINFO:
+      case SET_LOADING:
         return {
           ...state,
       loading: true

@@ -2,13 +2,13 @@ import {
     SET_LOADINGCHARACTERS,
     GET_CHARACTERS,
 
-  } from '../actions/todo-action'
+  } from '../Action/movie-action'
   
   // Define your state here
   const initialState = {
     loading: false,
     todos: [],
-    Character: ''
+    characters: ''
   }
   
   // This export default will control your state for your application

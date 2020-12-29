@@ -1,31 +1,62 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react';
 import {Jumbotron, Container, Row, Col, Button } from 'react-bootstrap'
-import '../App.css';
+// import '../App.css';
+import axios from 'axios'
 
-const jumbotron = () => {
-    
-    return (
+class jumbotron extends Component {
+    constructor(){
+        super()
+        this.state = {
+            movieInfo: []
+        }
+    }
+
+
+    componentDidMount(){
+        axios.get("http://13.212.139.34:3000/movie/movieInfo/Logan?page=1")
+    .then(res => { console.log(res, 'TS3')
+        const movieInfo = res.data.movieInfo
+        this.setState({
+            movieInfo});
+    console.log(movieInfo)
+
+    })
+    .catch(err => console.log('parsing data is failed, err'))
+    }
+    render(){
+        const{result} = this.state
+        console.log(result, 'CH')
+        return (
         <div>
         <Jumbotron fluid>
             
             <Container >
-                <h1 className="jumbotron-text">This is Film</h1>
+           
+                      
+                          <div key={this.state.movieInfo.Poster}>
+                              <br/>
+                              <br/>
+                              <br/>
+                              <h1 className="jumbotron-text">{this.state.movieInfo.Title}</h1>
                 <Row>
                 <Col xs lg="7">   
-                    <p className="jumbotron-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqu
-                    </p>
+                    <p className="jumbotron-text"><strong>
+                    {this.state.movieInfo.Plot} </strong></p>
                     </Col> 
                 </Row>
                     <p>
-                        <Button active tag="a" href="https://www.youtube.com/watch?v=-SdQ35LUIwk&list=PLU4DS8KR-LJ03qEsHn9zV4qdhcWtusBqb&index=11" action variant="outline-danger">Watch Trailer</Button> {' '}
+                        <Button active tag="a" href={this.state.movieInfo.Trailer} action variant="outline-danger">Watch Trailer</Button> {' '}
                         <Button variant="outline-danger">Add to Watchlist</Button>
                     </p>
+                              
+                          </div>    
+                      
+                  
+                
             </Container>
         </Jumbotron> 
-        
         </div>
-        )
-    }
+    )}
+}
 
 export default jumbotron

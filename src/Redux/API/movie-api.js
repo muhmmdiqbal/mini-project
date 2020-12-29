@@ -1,8 +1,8 @@
 import defaultAxios from 'axios'
 
 const axios = defaultAxios.create({
-  baseURL: 'http://13.212.139.34:3000/',
-//   headers: {'Content-Type': 'application/json'}
+  baseURL: 'https://jsonplaceholder.typicode.com/',
+  headers: {'Content-Type': 'application/json'}
 });
 
 // Get Carousel Images
@@ -11,6 +11,16 @@ export const getCarousel = async () => {
     const todos = await axios.get('carousel?_limit=3')
 
     return todos.data
+  } catch(err) {
+    return console.error(err)
+  }
+}
+
+export const getAllOverview = async () => {
+  try {
+    const overviews = await axios.get('overviews?_limit=1')
+
+    return overviews.data
   } catch(err) {
     return console.error(err)
   }

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Jumbotron, Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col, Button, Nav } from 'react-bootstrap'
 import {
     Route,
     NavLink,
@@ -9,6 +9,8 @@ import Overview from '../components/Overview';
 import '../App.css';
 import Characters from '../components/Characters';
 import Review from '../components/Review';
+import Jumbotron from '../components/Jumbotron';
+
 
 // import Characters from './components/Characters'
 // import Review from './components/Review'
@@ -17,23 +19,7 @@ const detailpage = () => {
     
     return (
         <div>
-        <Jumbotron className="jumbotron">
-            
-            <Container >
-                <h1 className="jumbotron-text">This is Film</h1>
-                <Row>
-                <Col xs lg="7">   
-                    <p className="jumbotron-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqu
-                    </p>
-                    </Col> 
-                </Row>
-                    <p>
-                        <Button active tag="a" href="#" action variant="outline-danger">Watch Trailer</Button> {' '}
-                        <Button variant="outline-danger">Add to Watchlist</Button>
-                    </p>
-            </Container>
-        </Jumbotron> 
+        <Jumbotron/>
         <Container >
         {/* <Col xs lg="4"> */}
         {/* <ListGroup horizontal > */}
@@ -48,6 +34,18 @@ const detailpage = () => {
             <li><NavLink to="/characters">Characters</NavLink></li>
             <li><NavLink to="/review">Review</NavLink></li>
           </ul>
+          {/* <Nav fill variant="pills" defaultActiveKey="/overview" >
+            <Nav.Item>
+              <Nav.Link exact to="/overview" href="/overview">Overview</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link to="/review" eventKey="link-1">Loooonger NavLink</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link to="/review" eventKey="link-2">Link</Nav.Link>
+            </Nav.Item>
+            
+          </Nav> */}
           <div className="content">
             <Route exact path="/characters" component={Characters}/>
             <Route exact path="/overview" component={Overview}/>

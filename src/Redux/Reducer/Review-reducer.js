@@ -4,13 +4,13 @@ import {
     DELETE_REVIEW,
     EDIT_REVIEW,
 
-  } from '../actions/todo-action'
+  } from '../Action/movie-action'
   
   // Define your state here
   const initialState = {
     loading: false,
     todos: [],
-    Review: ''
+    review: ''
   }
   
   // This export default will control your state for your application

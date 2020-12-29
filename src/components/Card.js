@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+
 import { Card, CardColumns } from 'react-bootstrap';
 import { data } from '../components/database';
 import { Link } from 'react-router-dom';
@@ -46,7 +47,17 @@ class CardBD extends Component {
                                 </Card.Body>               
                             </Card>
                         </div>
-                        
+                    //     <div key={Poster} className="kotak  mb-4">
+                    //     <Card className='kotakecil mr-2'> 
+                    //         <Card.Img width="50" variant="top" src={item.Poster} />
+                    //         <Card.Body>
+                    //             <Link to="/detailpage">
+                    //                 <Card.Title>{item.Title}</Card.Title>
+                    //             </Link>
+                    //             <Card.Text>{item.Genre}</Card.Text>
+                    //         </Card.Body>               
+                    //     </Card>
+                    // </div>
                         // </HashRouter>    
                     )
                 } ):null}

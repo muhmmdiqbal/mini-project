@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Form, FormGroup, FormLabel, FormControl, Image, Button, FormFile } from 'react-bootstrap'
+import { Form, FormGroup, FormLabel, FormControl, Image, Button} from 'react-bootstrap'
+import FormFileInput from 'react-bootstrap/esm/FormFileInput'
 
 function Profile() {
   const src = 'https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png'
@@ -10,10 +11,14 @@ function Profile() {
   const [confirmPassword, setConfirmPassword] = useState(localStorage.getItem('confirmPassword'))
   const [photo, setPhoto] = useState(localStorage.getItem('picture'))
 
+  let nameTemp
+
   useEffect(() => {
     axios.get(`http://13.212.139.34:3000/user/profile/${localStorage.getItem('email')}`).then(
       res => {
         const { picture, nama } = res.data.data
+        nameTemp = nama
+        setName(nameTemp)
         localStorage.setItem('picture', picture)
         localStorage.setItem('nama', nama)
       }
@@ -26,9 +31,10 @@ function Profile() {
 
   const handleUpdate = () => {
     const update = {
+      picture: photo,
       nama: name,
       password: password,
-      passwordConfirmation: confirmPassword
+      passwordConfirmation: confirmPassword,
     }
 
     axios.put(`http://13.212.139.34:3000/user/profile/update/${localStorage.getItem('email')}`, update)
@@ -36,6 +42,7 @@ function Profile() {
         res => {
           localStorage.setItem('nama', name)
           localStorage.setItem('password', password)
+          window.location.reload()
         }
       ).catch(
         err => {
@@ -56,7 +63,7 @@ function Profile() {
             }
             className='photo rounded-circle'
           />
-          <FormFile
+          <FormFileInput
             accept='image/png, image/jpeg, image/jpg' 
             onChange={e => setPhoto(e.target.files[0])}
           />
@@ -68,7 +75,7 @@ function Profile() {
             type='text'
             placeholder='Full Name'
             value={name}
-            onChange={e => setName(e.target.value)} 
+            onChange={e => nameTemp = e.target.value} 
             required
           />
         </FormGroup>

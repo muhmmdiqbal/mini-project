@@ -9,6 +9,7 @@ import axios from 'axios';
 
 axios.defaults.headers.common['Authorization'] = 'bearer ' + localStorage.getItem('token')
 
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
