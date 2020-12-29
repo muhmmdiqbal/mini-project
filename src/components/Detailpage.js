@@ -48,7 +48,7 @@ const detailpage = () => {
           </Nav> */}
           <div className="content">
             <Route exact path="/characters" component={Characters}/>
-            <Route exact path="/overview" component={Overview}/>
+            <Route active tag="a" exact path="/overview" component={Overview}/>
             <Route exact path="/review" component={Review}/>
           </div>
         </div>

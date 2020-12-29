@@ -13,11 +13,11 @@ class review extends Component {
     constructor(){
         super()
         this.state = {
-          reviews: [],
+            results: [],
           form: {
-            _id: '',
-            Nama: '',
-            Rating: '',
+            _id: 1,
+            Nama: 'Aing',
+            Rating: 3,
             Review: '',
             id: '',
           }
@@ -26,19 +26,19 @@ class review extends Component {
 
 
     componentDidMount(){
-        axios.get('http://13.212.139.34:3000/movie/movieInfo/Logan?page=1')
+        axios.get('http://13.212.139.34:3000/user/profile/reviews/tim@example.com?page=1')
     .then(res => { console.log(res, 'TS4')
-        const reviews = res.data.reviews
-        this.setState({reviews});
+        const results = res.data.results
+        this.setState({results});
     })
     .catch(err => console.log('parsing data is failed, err'))
 
     }
 
     postDataToAPI = () => {
-        axios.post('http://13.212.139.34:3000/movie/movieInfo/Logan?page=1', this.state.form)
+        axios.post('http://13.212.139.34:3000/user/review/timc@example.com', this.state.form)
         .then((res) => {
-            console.log(res)
+            console.log(res);
         })
     .catch(err => console.log('parsing data is failed, err'))
 
@@ -46,6 +46,8 @@ class review extends Component {
 
     handleFormChange = (event) => {
         let formNew = {...this.state.form};
+        let timestamp = new Date().getTime();
+        formNew['_id','id'] = timestamp;
         formNew[event.target.name] = event.target.value;
         this.setState({
             form: formNew
@@ -53,13 +55,13 @@ class review extends Component {
             console.log('value obj formNew: ', this.state.form)
         })
     }
-    handleOnClick = () => {
-		this.postDataToAPI()
-	}
-
+    handleSubmit = () => {
+        this.postDataToAPI()
+    }
+    
     render(){
-        const{reviews} = this.state
-        console.log(reviews, 'RW')
+        const{results} = this.state
+        console.log(results, 'RW')
         return(
               <Fragment>
                                  <Container>
@@ -84,7 +86,7 @@ class review extends Component {
                                    type="text" 
                                    onChange={this.handleFormChange}
                                    name="Review"/><br/>
-                                   <Button as="input" type="submit" value="Submit" className="submit" onClick={this.handleOnClick}/>
+                                   <Button as="input" type="submit" value="Submit" className="submit" onClick={this.handleSubmit}/>
                                    </Media.Body>
                                    
                                    </Media>
@@ -92,8 +94,8 @@ class review extends Component {
                        
                                </Form>
                     <br />
-                  {reviews ? reviews.map(item => {
-                    const {Nama, Review, Picture, id, Rating, _id} = reviews 
+                  {results ? results.map(item => {
+                    const {Nama, Review, Picture, id, Rating, _id} = results 
                       return (
                         <div key={_id}>
                             {/* <Comments name={item.Nama} review={item.Review}/> */}
