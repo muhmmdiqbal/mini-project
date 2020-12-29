@@ -30,10 +30,10 @@ const detailpage = () => {
         <HashRouter>
         <div>
           <ul className="header">
-            <li><NavLink active tag="a" exact to="/overview">Overview</NavLink></li>
+            <li className="active"><NavLink active tag="a" exact to="/overview">Overview</NavLink></li>
             <li><NavLink to="/characters">Characters</NavLink></li>
             <li><NavLink to="/review">Review</NavLink></li>
-          </ul>
+          </ul><br/>
           {/* <Nav fill variant="pills" defaultActiveKey="/overview" >
             <Nav.Item>
               <Nav.Link exact to="/overview" href="/overview">Overview</Nav.Link>

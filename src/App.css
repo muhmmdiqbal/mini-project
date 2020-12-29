@@ -16,16 +16,19 @@ ul.header li {
 }
 
 ul.header {
-  background-color: #ffffff;
+  background-color: #222222;
   padding: 0;
   border: #000000;
 }
 ul.header li a {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-weight: bold;
   text-decoration: none;
   padding: 20px;
   display: inline-block;
+}
+li .active{
+  background-color: rgb(78, 72, 72);
 }
 
 .bgCircle {

@@ -34,9 +34,7 @@ class jumbotron extends Component {
            
                       
                           <div key={this.state.movieInfo.Poster}>
-                              <br/>
-                              <br/>
-                              <br/>
+                             
                               <h1 className="jumbotron-text">{this.state.movieInfo.Title}</h1>
                 <Row>
                 <Col xs lg="7">   

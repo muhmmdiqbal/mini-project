@@ -37,7 +37,7 @@ class CardBD extends Component {
                         // <HashRouter>
                         <div key={Poster} className="kotak  mb-4">
                             <Card className='kotakecil mr-2'> 
-                                <Card.Img width="50" variant="top" src={item.Poster} />
+                                <Card.Img width={200} height={300} variant="top" src={item.Poster} />
                                 <Card.Body>
                                     <Link to="/detailpage#/overview">
                                         <Card.Title>{item.Title}</Card.Title>
