@@ -69,8 +69,7 @@ ul.header li a {
 }
 
 .page {
-  height: 7vh;
-  margin: 0 1vw;
+  margin: 10px .5vw;
 }
 
 .bg-header-footer {

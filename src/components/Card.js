@@ -10,53 +10,39 @@ class CardBD extends Component {
     constructor(){
         super()
         this.state = {
-            result : []
+            results : []
         }
     }
 
-    // componentDidMount(){
-    //     axios.get("http://13.212.139.34:3000/category?page=1")
-    //     .then(res => {
-    //         const result = res.data
-    //         this.setState({result});
-    //     })
-    //     .catch(err => console.log('parsing data is failed, err'))
-    // }
 
     componentDidMount(){
-        fetch("http://13.212.139.34:3000/category?page=1")
-        .then(res => res.json())
-        .then(parsedJSON => parsedJSON.result.map(data => (
-            {
-                poster: `${data.Poster}`,
-                title : `${data.Title}`,
-                genre: `${data.Genre}`
-            }
-        )))
-        .then(result => this.setState({
-            result
-        }))
-        .catch(error => console.log('parsing data is failed', error))
-    }
+        axios.get("http://13.212.139.34:3000/category?page=1")
+    .then(res => { console.log(res, 'TS')
+        const results = res.data.results
+        this.setState({results});
+    })
+    .catch(err => console.log('parsing data is failed, err'))
 
+    }
+    
     render(){
-        const{result} = this.state
-        console.log(result, 'cards')
+        const{results} = this.state
+        console.log(results, 'CD')
         return(
             <CardColumns>
             <Fragment>
-                {result?  result.map(item => {
-                    const { poster, title, genre} = result
+                {results?  results.map(item => {
+                    const { Poster, Title, Genre} = results
                     return (
                         // <HashRouter>
-                        <div key={poster} className="kotak  mb-4">
+                        <div key={Poster} className="kotak  mb-4">
                             <Card className='kotakecil mr-2'> 
-                                <Card.Icmg width="50" variant="top" src={poster} />
+                                <Card.Img width="50" variant="top" src={item.Poster} />
                                 <Card.Body>
                                     <Link to="/detailpage">
-                                        <Card.Title>{title}</Card.Title>
+                                        <Card.Title>{item.Title}</Card.Title>
                                     </Link>
-                                    <Card.Text>{genre}</Card.Text>
+                                    <Card.Text>{item.Genre}</Card.Text>
                                 </Card.Body>               
                             </Card>
                         </div>

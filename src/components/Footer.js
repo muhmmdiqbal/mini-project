@@ -1,18 +1,23 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook, faInstagram, faTwitter, faGooglePlay, faAppStore } from '@fortawesome/free-brands-svg-icons'
 import React from 'react'
 import { Col, Container, Image, NavLink, Row } from 'react-bootstrap'
-import apple from './assets/apple store 1.png'
-import facebook from './assets/face 1.png'
-import google from './assets/google play 1.png'
-import instagram from './assets/instagram 1.png'
-import pinterest from './assets/pinterest 1.png'
+import logo from './assets/logo.jpg'
 
 const Footer = () => {
+  const facebook = <FontAwesomeIcon icon={faFacebook} size='3x' className='page' />
+  const instagram = <FontAwesomeIcon icon={faInstagram} size='3x' className='page' />
+  const twitter = <FontAwesomeIcon icon={faTwitter} size='3x' className='page' />
+  const googlePlay = <FontAwesomeIcon icon={faGooglePlay} size='3x' className='page' />
+  const appStore = <FontAwesomeIcon icon={faAppStore} size='3x' className='page' />
+
+
   return (
     <div className='bg-header-footer text-light'>
       <Container>
         <Row className='pt-5'>
           <Col md='6'>
-            <h1>UCMovie</h1>
+            <Image src={logo} className='logo' />
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
           </Col>
 
@@ -29,13 +34,14 @@ const Footer = () => {
 
           <Col md='4'>
             <p>Download</p>
-            <Image src={google} className='download' alt='download from google play store' />
-            <Image src={apple} className='download' alt='download from apple store' />
+            
+            {googlePlay}
+            {appStore}
 
-            <p>Social Media</p>
-            <Image src={facebook} className='page' alt='facebook page' />
-            <Image src={instagram} className='page' alt='instagram page' />
-            <Image src={pinterest} className='page' alt='pinterest page' />
+            <p className='mt-4'>Social Media</p>
+            {facebook}
+            {instagram}
+            {twitter}
           </Col>
         </Row>
 

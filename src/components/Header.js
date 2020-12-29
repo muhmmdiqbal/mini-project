@@ -12,10 +12,12 @@ const Header = (props) => {
   const icon = <FontAwesomeIcon icon={faUserCircle} size='2x' />
   const [isLoggedIn, setLoggedIn] = useState(false)
   const [searchData, setSearchData] = useState({
-    
+    searchTerm: '',
+    movieTitle: '',
+
   })
 
-  let search = ''
+  let search = 'rush'
 
   const handleSearch = e => {
     e.preventDefault()
