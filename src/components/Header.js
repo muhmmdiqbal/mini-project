@@ -19,6 +19,7 @@ const Header = () => {
     localStorage.removeItem('email')
     localStorage.removeItem('password')
     localStorage.removeItem('picture')
+    setLoggedIn(false)
     window.location.reload()
   }
 

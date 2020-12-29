@@ -32,7 +32,7 @@ class CardBD extends Component {
             <CardColumns>
             <Fragment>
                 {results?  results.map(item => {
-                    const { Poster, Title, Genre} = results
+                    const { Poster} = results
                     return (
                         // <HashRouter>
                         <div key={Poster} className="kotak  mb-4">
