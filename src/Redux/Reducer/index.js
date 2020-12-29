@@ -1,3 +1,4 @@
+
 import { combineReducers } from 'redux'
 import Carousel from "../Reducer/Carousel-reducer"
 import AllCategory from "../Reducer/Allcategory-reducer"
@@ -10,6 +11,8 @@ import Pagination from  "../Reducer/Pagination-reducer"
 import Review from "../Reducer/Review-reducer"
 import Character from "../Reducer/Characters-reducer"
 import Movieinfo from "../Reducer/Movieinfo-reducer"
+import todo from '../Reducer/todo-reducer'
+import overview from '../Reducer/Overview-reducer'
 
 export default combineReducers({
     Carousel,
@@ -23,4 +26,6 @@ export default combineReducers({
     Review,
     Character,
     Movieinfo,
+    todo,
+    overview
 })

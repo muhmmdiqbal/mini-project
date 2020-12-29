@@ -9,6 +9,7 @@ import Biography from "../components/Biography";
 import Homepage from "../components/Homepage";
 
 
+
 const routes = () => {
   return (
     <Router>
