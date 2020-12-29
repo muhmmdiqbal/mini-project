@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Container, Form, FormControl, Image,  Nav, Navbar, NavbarBrand, NavDropdown } from 'react-bootstrap'
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse'
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle'
@@ -7,10 +7,24 @@ import logo from './assets/logo.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import SearchResult from './SearchResult'
+import axios from 'axios'
 
 const Header = () => {
   const icon = <FontAwesomeIcon icon={faUserCircle} size='2x' />
   const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem('isLoggedIn'))
+
+  useEffect(() => {
+    axios.get(`http://13.212.139.34:3000/user/profile/${localStorage.getItem('email')}`).then(
+      res => {
+        const { nama } = res.data.data
+        localStorage.setItem('nama', nama)
+      }
+    ).catch(
+      err => {
+        console.log(err)
+      }
+    )
+  })
 
   const handleSignOut = () => {
     localStorage.removeItem('isLoggedIn')
@@ -19,7 +33,8 @@ const Header = () => {
     localStorage.removeItem('email')
     localStorage.removeItem('password')
     localStorage.removeItem('picture')
-    window.location.reload()
+    setLoggedIn(false)
+    window.location.href('/')
   }
 
   let search = ''

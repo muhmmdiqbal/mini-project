@@ -11,16 +11,11 @@ function Profile() {
   const [confirmPassword, setConfirmPassword] = useState(localStorage.getItem('confirmPassword'))
   const [photo, setPhoto] = useState(localStorage.getItem('picture'))
 
-  let nameTemp
-
   useEffect(() => {
     axios.get(`http://13.212.139.34:3000/user/profile/${localStorage.getItem('email')}`).then(
       res => {
-        const { picture, nama } = res.data.data
-        nameTemp = nama
-        setName(nameTemp)
+        const { picture } = res.data.data
         localStorage.setItem('picture', picture)
-        localStorage.setItem('nama', nama)
       }
     ).catch(
       err => {
@@ -75,7 +70,7 @@ function Profile() {
             type='text'
             placeholder='Full Name'
             value={name}
-            onChange={e => nameTemp = e.target.value} 
+            onChange={e => setName(e.target.value)} 
             required
           />
         </FormGroup>
