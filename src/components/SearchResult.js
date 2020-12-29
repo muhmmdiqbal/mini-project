@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const SearchResult = (props) => {
-  const [data, setData] = useState()
+  // const [data, setData] = useState()
 
   return (
     <>

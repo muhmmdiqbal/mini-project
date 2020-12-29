@@ -30,7 +30,7 @@ class Overview extends Component {
         
     render() { 
 
-        const {isLoaded, movieInfo, } = this.state;
+        const {isLoaded } = this.state;
 
         if (!isLoaded) {
             return <div>Loading...</div>
