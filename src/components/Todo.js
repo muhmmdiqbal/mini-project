@@ -12,8 +12,9 @@ import {
 } from '../Redux/Action/todo-action'
 
 // Components
-import TodoForm from './TodoForm'
-import TodoItem from './TodoItem'
+import TodoForm from '../components/TodoForm'
+import TodoItem from '../components/TodoItem'
+
 
 const Todo = ({
 	todo: { loading, todos },

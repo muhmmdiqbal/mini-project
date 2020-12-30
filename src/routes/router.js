@@ -7,6 +7,7 @@ import Drama from "../components/Drama";
 import Animation from "../components/Animation";
 import Biography from "../components/Biography";
 import Homepage from "../components/Homepage";
+import SearchResult from "../components/SearchResult";
 
 
 
@@ -16,6 +17,9 @@ const routes = () => {
       <Switch>
         <Route path="/" exact>
           <Homepage />
+        </Route>
+        <Route path="/searchResult" exact>
+          <SearchResult />
         </Route>
         <Route path="/profile" exact>
           <Profile />

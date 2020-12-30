@@ -20,9 +20,9 @@ const FormModal = () => {
     setShowRegister(true)
   }
 
-  const handlePassword = () => {
+  // const handlePassword = () => {
     
-  }
+  // }
 
   let fullName, email, password, confirmPassword
 

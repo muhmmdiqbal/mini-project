@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import {Jumbotron, Container, Row, Col, Button } from 'react-bootstrap'
 // import '../App.css';
 import axios from 'axios'
@@ -34,9 +34,7 @@ class jumbotron extends Component {
            
                       
                           <div key={this.state.movieInfo.Poster}>
-                              <br/>
-                              <br/>
-                              <br/>
+                             
                               <h1 className="jumbotron-text">{this.state.movieInfo.Title}</h1>
                 <Row>
                 <Col xs lg="7">   

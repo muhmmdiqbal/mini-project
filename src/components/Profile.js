@@ -26,17 +26,17 @@ function Profile() {
 
   const handleUpdate = () => {
     const update = {
-      picture: photo,
+      picture: '/img/' + photo,
       nama: name,
       password: password,
       passwordConfirmation: confirmPassword,
     }
-
     axios.put(`http://13.212.139.34:3000/user/profile/update/${localStorage.getItem('email')}`, update)
       .then(
         res => {
           localStorage.setItem('nama', name)
           localStorage.setItem('password', password)
+          // localStorage.setItem('picture', photo)
           window.location.reload()
         }
       ).catch(
@@ -54,7 +54,7 @@ function Profile() {
             src={
               localStorage.getItem('picture') === '/img/null' || !localStorage.getItem('picture')
                 ? src 
-                : `http://13.212.139.34:3000/user/profile/`
+                : localStorage.getItem('picture')
             }
             className='photo rounded-circle'
           />

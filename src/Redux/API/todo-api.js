@@ -1,7 +1,7 @@
 import defaultAxios from 'axios'
 
 const axios = defaultAxios.create({
-  baseURL: 'http://13.212.139.34:3000/movie/movieInfo/Logan?page=1',
+  baseURL: 'https://jsonplaceholder.typicode.com/',
   headers: {'Content-Type': 'application/json'}
 });
 

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 import { Card, CardColumns } from 'react-bootstrap';
-import { data } from '../components/database';
+// import { data } from '../components/database';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -14,7 +14,6 @@ class CardBD extends Component {
             results : []
         }
     }
-
 
     componentDidMount(){
         axios.get("http://13.212.139.34:3000/category?page=1")
@@ -33,14 +32,14 @@ class CardBD extends Component {
             <CardColumns>
             <Fragment>
                 {results?  results.map(item => {
-                    const { Poster, Title, Genre} = results
+                    const { Poster} = results
                     return (
                         // <HashRouter>
                         <div key={Poster} className="kotak  mb-4">
                             <Card className='kotakecil mr-2'> 
-                                <Card.Img width="50" variant="top" src={item.Poster} />
+                                <Card.Img width={200} height={300} variant="top" src={item.Poster} />
                                 <Card.Body>
-                                    <Link to="/detailpage">
+                                    <Link to="/detailpage#/overview">
                                         <Card.Title>{item.Title}</Card.Title>
                                     </Link>
                                     <Card.Text>{item.Genre}</Card.Text>

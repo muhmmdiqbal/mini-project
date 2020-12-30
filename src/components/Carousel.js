@@ -33,14 +33,15 @@ class CarouselHM extends Component {
         <Carousel>
           {result
             ? result.map((item) => {
-                const { Poster, Title } = result;
+                // const { Poster, Title } = result;
                 return (
                   // <React.Fragment>
                     <Carousel.Item>
                       <img
                        className="d-block w-100"
                         src={item.Poster}
-                        height="auto"
+                        height="500vh"
+                        alt="carousel"
                         // width="auto"
                         
                         // alt="First slide"
@@ -167,25 +168,25 @@ export default CarouselHM;
 // export default <Example />;
 
 
-                 {/* <Carousel.Item>
-                              <img
-                                className="d-block w-100"
-                                src={item.Poster}
-                                // alt="First slide"
-                              />
-                              <Carousel.Caption>
-                                <h3>{item.Title}</h3>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                              </Carousel.Caption>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                              <img
-                                className="d-block w-100"
-                                src={item.Poster}
-                                // alt="First slide"
-                              />
-                              <Carousel.Caption>
-                                <h3>{item.Title}</h3>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                              </Carousel.Caption>
-                            </Carousel.Item> */}
+                //  {/* <Carousel.Item>
+                //               <img
+                //                 className="d-block w-100"
+                //                 src={item.Poster}
+                //                 // alt="First slide"
+                //               />
+                //               <Carousel.Caption>
+                //                 <h3>{item.Title}</h3>
+                //                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                //               </Carousel.Caption>
+                //             </Carousel.Item>
+                //             <Carousel.Item>
+                //               <img
+                //                 className="d-block w-100"
+                //                 src={item.Poster}
+                //                 // alt="First slide"
+                //               />
+                //               <Carousel.Caption>
+                //                 <h3>{item.Title}</h3>
+                //                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                //               </Carousel.Caption>
+                //             </Carousel.Item> */}

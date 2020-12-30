@@ -15,7 +15,7 @@ class review extends Component {
         this.state = {
           reviews: [],
           form: {
-            _id: '',
+            _id: 1,
             Nama: '',
             Rating: '',
             Review: '',
@@ -36,9 +36,9 @@ class review extends Component {
     }
 
     postDataToAPI = () => {
-        axios.post('http://13.212.139.34:3000/movie/movieInfo/Logan?page=1', this.state.form)
+        axios.post(`http://13.212.139.34:3000/user/review/${localStorage.getItem('email')}`, this.state.form)
         .then((res) => {
-            console.log(res)
+            console.log(res, 'post')
         })
     .catch(err => console.log('parsing data is failed, err'))
 
@@ -46,12 +46,17 @@ class review extends Component {
 
     handleFormChange = (event) => {
         let formNew = {...this.state.form};
+        let timestamp = new Date().getTime();
+        formNew['id'] = timestamp;
         formNew[event.target.name] = event.target.value;
         this.setState({
             form: formNew
         }, () => {
             console.log('value obj formNew: ', this.state.form)
         })
+    }
+    handleSubmit = () => {
+        
     }
     handleOnClick = () => {
 		this.postDataToAPI()
@@ -63,7 +68,7 @@ class review extends Component {
         return(
               <Fragment>
                                  <Container>
-                                 <Form>
+                                 <Form onSubmit={this.postDataToAPI}>
                                 
                                 <Form.Group controlId="exampleForm.ControlTextarea1">
                                             
@@ -77,14 +82,14 @@ class review extends Component {
                                        alt="Generic placeholder"
                                    />  
                                    <Media.Body>
-                                   <h5>Reviewer</h5>
+                                   <h5>{localStorage.getItem('nama')}</h5>
                                    <Star name="rating" newValue={this.handleFormChange}/>  <br/> 
                                    
                                    <Form.Control size="lg" as="textarea" rows={3} placeholder="Leave a Review" 
                                    type="text" 
                                    onChange={this.handleFormChange}
                                    name="Review"/><br/>
-                                   <Button as="input" type="submit" value="Submit" className="submit" onClick={this.handleOnClick}/>
+                                   <Button as="input" type="submit" value="Submit" className="submit" onClick={this.handleSubmit}/>
                                    </Media.Body>
                                    
                                    </Media>
@@ -93,7 +98,7 @@ class review extends Component {
                                </Form>
                     <br />
                   {reviews ? reviews.map(item => {
-                    const {Nama, Review, Picture, id, Rating, _id} = reviews 
+                    const {_id} = reviews 
                       return (
                         <div key={_id}>
                             {/* <Comments name={item.Nama} review={item.Review}/> */}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, Button, Nav } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import {
     Route,
     NavLink,
@@ -30,10 +30,10 @@ const detailpage = () => {
         <HashRouter>
         <div>
           <ul className="header">
-            <li><NavLink active tag="a" exact to="/overview">Overview</NavLink></li>
+            <li className="active"><NavLink active tag="a" exact to="/overview">Overview</NavLink></li>
             <li><NavLink to="/characters">Characters</NavLink></li>
             <li><NavLink to="/review">Review</NavLink></li>
-          </ul>
+          </ul><br/>
           {/* <Nav fill variant="pills" defaultActiveKey="/overview" >
             <Nav.Item>
               <Nav.Link exact to="/overview" href="/overview">Overview</Nav.Link>
@@ -48,7 +48,7 @@ const detailpage = () => {
           </Nav> */}
           <div className="content">
             <Route exact path="/characters" component={Characters}/>
-            <Route exact path="/overview" component={Overview}/>
+            <Route active tag="a" exact path="/overview" component={Overview}/>
             <Route exact path="/review" component={Review}/>
           </div>
         </div>

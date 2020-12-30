@@ -6,7 +6,6 @@ import FormModal from './FormModal'
 import logo from './assets/logo.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
-import SearchResult from './SearchResult'
 import axios from 'axios'
 
 const Header = () => {
@@ -16,8 +15,9 @@ const Header = () => {
   useEffect(() => {
     axios.get(`http://13.212.139.34:3000/user/profile/${localStorage.getItem('email')}`).then(
       res => {
-        const { nama } = res.data.data
+        const { nama, picture } = res.data.data
         localStorage.setItem('nama', nama)
+        localStorage.setItem('picture', picture)
       }
     ).catch(
       err => {
@@ -33,14 +33,14 @@ const Header = () => {
     localStorage.removeItem('email')
     localStorage.removeItem('password')
     localStorage.removeItem('picture')
+    localStorage.removeItem('searchTerm')
     setLoggedIn(false)
-    window.location.href('/')
   }
 
-  let search = ''
+  let searchTerm = ''
 
   const handleSearch = () => {
-    <SearchResult searchTerm={search} />
+    localStorage.setItem('searchTerm', searchTerm)
   }
 
   return (
@@ -52,17 +52,23 @@ const Header = () => {
           <NavbarToggle aria-controls="basic-navbar-nav" />
           <NavbarCollapse id="basic-navbar-nav">
             <Col>
-              <Form inline onSubmit={handleSearch}>
-                  <FormControl type="text" placeholder="Enter movie title" className="mx-auto w-75" onChange={e => search = e.target.value} />
+              <Form inline onSubmit={handleSearch} action='/searchResult'>
+                  <FormControl type="text" placeholder="Enter movie title" className="mx-auto w-75" onChange={e => searchTerm = e.target.value} />
               </Form>
             </Col>
 
             <Nav className='text-center'>
               {
                 isLoggedIn
-                ? <NavDropdown title={icon} id="basic-nav-dropdown">
+                ? <NavDropdown
+                  title={
+                    localStorage.getItem('picture') === '/img/null' || !localStorage.getItem('picture') 
+                      ? icon 
+                      : localStorage.getItem('picture')
+                  } 
+                  id="basic-nav-dropdown">
                   <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
-                  <NavDropdown.Item onClick={handleSignOut}>Sign out</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleSignOut} href='/'>Sign out</NavDropdown.Item>
                 </NavDropdown>
                 : <FormModal />
               }

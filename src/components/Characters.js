@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Card, CardColumns, Container, CardGroup, CardDeck, Col } from 'react-bootstrap';
+import { Card, CardColumns, Container, CardDeck } from 'react-bootstrap';
 // import { data } from '../components/database';
 // import '../App.css'; 
 // import React, { Component } from 'react';
@@ -46,7 +46,7 @@ import axios from 'axios'
               <Fragment>
 
                   {result ? result.map(item => {
-                    const {Nama, Picture} = result 
+                    const { Picture} = result 
                       return (
                           <div key={Picture} className="kotak mb-4">
                               
